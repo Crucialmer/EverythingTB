@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using System.Reflection;
 using NLog;
@@ -32,7 +32,7 @@ namespace EverythingToolbar.App.Helpers
         {
             logger.Debug("Debug logging enabled.");
             logger.Info(
-                $"EverythingToolbar {Assembly.GetExecutingAssembly().GetName().Version} started. OS: {Environment.OSVersion}"
+                $"EverythingTB {Assembly.GetExecutingAssembly().GetName().Version} started. OS: {Environment.OSVersion}"
             );
         }
 
@@ -72,7 +72,7 @@ namespace EverythingToolbar.App.Helpers
         {
             var logfile = new FileTarget("logfile")
             {
-                FileName = Path.Combine(ConfigPaths.GetConfigDirectory(), "EverythingToolbar.log"),
+                FileName = Path.Combine(ConfigPaths.GetConfigDirectory(), "EverythingTB.log"),
                 ArchiveEvery = FileArchivePeriod.Day,
                 ArchiveNumbering = ArchiveNumberingMode.Date,
                 MaxArchiveFiles = 3,

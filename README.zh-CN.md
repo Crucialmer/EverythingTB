@@ -1,55 +1,50 @@
 _其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
 
-# <img src="EverythingToolbar/Images/AppIcon.ico" width="24"> EverythingToolbar
+# <img src="EverythingToolbar/Images/AppIcon.ico" width="24"> EverythingTB
 
-<a href="https://github.com/Crucialmer/EverythingToolbar/releases/latest"><img src="https://img.shields.io/github/v/release/Crucialmer/EverythingToolbar?color=blue" height="25" /></a>
-<a href="https://github.com/Crucialmer/EverythingToolbar/releases/latest"><img src="https://img.shields.io/github/downloads/Crucialmer/EverythingToolbar/total?color=critical" height="25" /></a>
+<a href="https://github.com/Crucialmer/EverythingTB/releases/latest"><img src="https://img.shields.io/github/v/release/Crucialmer/EverythingTB?color=blue" height="25" /></a>
+<a href="https://github.com/Crucialmer/EverythingTB/releases/latest"><img src="https://img.shields.io/github/downloads/Crucialmer/EverythingTB/total?color=critical" height="25" /></a>
 <a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0"><img src="https://img.shields.io/badge/.NET-10.0%20LTS-purple.svg" height="25" /></a>
 
 为 Windows 任务栏提供即时文件搜索集成，由 [Everything](https://www.voidtools.com/) 驱动。
 
-## 🚀 EverythingToolbar v1.2.0 特性亮点
+## 🚀 EverythingTB v1.7.0 特性亮点
 
-- **全屏支持 8K 超高分辨率与无损 DPI 缩放（全新）**：
-  - **原生 Per-Monitor V2 深度适配**：支持从 100% 至 500%+ 任意 DPI 缩放比例，跨显示器拖拽无缝自适应。
-  - **8K 级别超清图标解析**：集成 Windows Shell Jumbo（256×256）超大图标图库与多阶动态回退，告别模糊发虚。
-  - **双重多采样高质过滤**：全局启用 `RenderOptions.BitmapScalingMode="HighQuality"` 与 `SnapsToDevicePixels="True"`，微像素级边缘抗锯齿。
-  - **Display 级高精文字排版**：亚像素对齐与 ClearType 优化，即便在 8K（7680×4320）巨幕上文字依然纤毫毕现、锐利晶莹。
-- **macOS 26 磨砂玻璃设计美学**：
-  - 深度磨砂亚克力玻璃（Frosted Acrylic Glass）与 Obsidian/Milk White 双色调。
-  - 胶囊搜索条（Capsule Pill）与圆角搜索框，精致聚焦微光。
-  - 8px 优雅圆角列表项（Spotlight Row Selection）。
-  - 适配现代系统字族（Segoe UI Variable / SF Pro / 微软雅黑）。
-- **可自定义搜索结果字体大小**：
-  - 默认采用精致黄金阅读尺寸 **11 pt**。
-  - 在「设置」→「界面」中支持在 9 pt 至 16 pt 之间自由调节，实时预览并立即生效。
-- **自定义项目自动更新与检测**：
-  - 软件更新源深度对接当前仓库：`https://github.com/Crucialmer/EverythingToolbar`。
-  - 启动或在「高级」设置中一键检测新版发布，随时获取最新特性。
-- **100% 纯绿色免安装架构**：
-  - 抛弃侵入式 COM Deskband，采用无侵入 Launcher 模式。
-  - **零系统写入**：配置（`settings.ini`）、规则（`rules.xml`）与日志（`EverythingToolbar.log`）全部严格保存在程序根目录下的 `./Config` 文件夹中，完全不向 `%APPDATA%`、`%TEMP%` 或 Windows 注册表写入任何多余文件。
-- **框架依赖轻量化发布**：由于系统已预装 .NET 10，软件未打包冗余运行时，解压即用，体积极致轻盈（仅约 14MB）。
-- **发布包**：`release/EverythingToolbar.zip`。
+- **品牌全维升级为 EverythingTB**：
+  - 项目名称、发布包名、软件窗口及应用内标识全面升级为 **EverythingTB**，更加简洁利落。
+  - 单一纯绿色发行包更名为 **`EverythingTB.zip`**，内置一键启动脚本 `启动EverythingTB.bat`。
 
-<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/demo.gif" alt="EverythingToolbar演示" width="80%">
+- **深度融合 macOS 26 设计美学（macOS 26 Design Aesthetic）**：
+  - **浮动毛玻璃晶透卡片（Floating Translucent Glass Card）**：搜索主弹窗采用 14px 优雅大圆角与 1px 微光半透明外轮廓线（Subtle 1px Luminous Translucent Border），光影自然通透，呈现极致高级的 macOS 悬浮卡片质感。
+  - **极简药丸预览侧栏（Pill-style Preview Pane）**：右侧预览面板加入精致半透明边框与圆角包边，与搜索卡片浑然一体。
+  - **macOS 26 & Fluent 排版层级调优**：默认全局字体采用动态光学字族 `Segoe UI Variable Text`，中文优雅回退至微软雅黑，数字、字母、符号具有极高清晰度与现代感。
+  - **Spotlight 药丸选区与色彩高亮**：结果列表项采用 8px 圆角药丸背板、Apple 标志性 Vibrant Blue 搜索词高亮（`#2997FF` / `#0071E3`）与垂直指示标。
+  - **任务栏日期与星期胶囊组件微调优**：集成防抖与无冗余渲染机制，点击可一键直达系统日历。
+
+- **代码全维优化与零损耗运行**：
+  - **CPU 与重绘极致精简**：优化后台日期刷新机制与字体转换器，彻底杜绝无效的 UI 布局重排。
+  - **原生 Per-Monitor V2 8K 超高清支持**：100%~500%+ 任意 DPI 缩放零失真，Shell Jumbo（256×256）超大图标图库解析。
+  - **应用内直连自动更新**：更新源直连当前仓库 `Crucialmer/EverythingTB`，一键无感下载静默替换升级，配置与自定义规则严格保存在 `./Config` 绝不丢失。
+  - **100% 纯绿色免安装**：零注册表残留，无需安装任何后台驱动，体积极致轻盈。
+
+<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/demo.gif" alt="EverythingTB演示" width="80%">
 
 ## 🌟 功能特点
 
 ### 任务栏集成
-EverythingToolbar 位于您的任务栏上，既可以作为直接在 Windows 11 上键入的搜索框，也可以作为点击打开搜索窗口的紧凑图标。
+EverythingTB 位于您的任务栏上，既可以作为直接在 Windows 11 上键入的搜索框，也可以作为点击打开搜索窗口的紧凑图标。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/taskbar_modes.png" alt="任务栏搜索框与搜索图标" width="80%">
 
-您可以在设置过程中选择，也可以随时在 **设置** → **任务栏集成** 中切换。此外，在 Windows 10 上 EverythingToolbar 还可以作为原生桌面栏集成。
+您可以在设置过程中选择，也可以随时在 **设置** → **任务栏集成** 中切换。此外，在 Windows 10 上 EverythingTB 还可以作为原生桌面栏集成。
 
 ### 明暗主题自适应
-EverythingToolbar 无缝融入 Windows 10 和 11，自动跟随系统主题切换明亮/暗黑模式。
+EverythingTB 无缝融入 Windows 10 和 11，自动跟随系统主题切换明亮/暗黑模式。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/fast.png" alt="明亮和暗黑主题" width="80%">
 
 ### 自定义搜索过滤器
-EverythingToolbar 内置常用搜索过滤器。对于高级用户，它可以与 Everything 的自定义过滤器同步，让您完全掌控搜索体验。在 EverythingToolbar 的 **过滤器** 设置中勾选 **使用 Everything 过滤器** 即可启用。
+EverythingTB 内置常用搜索过滤器。对于高级用户，它可以与 Everything 的自定义过滤器同步，让您完全掌控搜索体验。在 EverythingTB 的 **过滤器** 设置中勾选 **使用 Everything 过滤器** 即可启用。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/flexible.png" alt="自定义搜索过滤器" width="80%">
 
@@ -64,7 +59,7 @@ EverythingToolbar 内置常用搜索过滤器。对于高级用户，它可以�
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/custom_actions.png" alt="自定义操作选项" width="80%">
 
 ### 兼容性与高分辨率
-EverythingToolbar 在 Windows 10 和 Windows 11 上均可顺畅运行，原生支持 8K/4K 超高分显示屏与各级缩放比例。在 Windows 11 上，任务栏搜索框开箱即用地嵌入任务栏；如需完整桌面栏支持，还可与 [ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) 及 [StartAllBack](https://www.startallback.com/) 深度搭配。
+EverythingTB 在 Windows 10 和 Windows 11 上均可顺畅运行，原生支持 8K/4K 超高分显示屏与各级缩放比例。在 Windows 11 上，任务栏搜索框开箱即用地嵌入任务栏；如需完整桌面栏支持，还可与 [ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) 及 [StartAllBack](https://www.startallback.com/) 深度搭配。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/compatible.png" alt="Windows 10截图" width="80%">
 
@@ -94,7 +89,7 @@ EverythingToolbar 在 Windows 10 和 Windows 11 上均可顺畅运行，原生�
 - [Everything](https://www.voidtools.com) ≥ 1.4.1 (x64) 并在后台运行
 
 ### 快速启动（绿色便携版）
-1. 从 [GitHub Releases](https://github.com/Crucialmer/EverythingToolbar/releases/latest) 下载 `EverythingToolbar.zip`。
+1. 从 [GitHub Releases](https://github.com/Crucialmer/EverythingTB/releases/latest) 下载 `EverythingTB.zip`。
 2. 解压到任意您喜欢的文件夹。
-3. 直接双击运行 `EverythingToolbar.Launcher.exe`。
+3. 双击运行 `启动EverythingTB.bat`（或 `EverythingToolbar.Launcher.exe` / `EverythingTB.exe`）。
 4. 所有的配置、规则及运行日志均隔离在软件根目录 `./Config/` 下，绝不写入 Windows 注册表与 `%APPDATA%`。

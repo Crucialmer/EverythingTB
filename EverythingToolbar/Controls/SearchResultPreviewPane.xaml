@@ -10,7 +10,8 @@
     Margin="{DynamicResource SearchResultPreviewPaneMargin}"
     Padding="0"
     Background="{DynamicResource TextBoxBackground}"
-    BorderThickness="0"
+    BorderBrush="{DynamicResource SearchResultPreviewPaneBorder}"
+    BorderThickness="1"
     CornerRadius="{DynamicResource SearchResultPreviewPaneCornerRadius}">
     <Grid>
       <ScrollViewer

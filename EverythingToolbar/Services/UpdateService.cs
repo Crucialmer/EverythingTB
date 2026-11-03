@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -20,9 +20,9 @@ namespace EverythingToolbar.Services
         private static readonly ILogger Logger = ToolbarLogger.GetLogger(nameof(UpdateService));
         private static readonly HttpClient HttpClient = new();
         public const string LatestReleaseApiUrl =
-            "https://api.github.com/repos/Crucialmer/EverythingToolbar/releases/latest";
+            "https://api.github.com/repos/Crucialmer/EverythingTB/releases/latest";
         public const string LatestReleaseUrl =
-            "https://github.com/Crucialmer/EverythingToolbar/releases/latest";
+            "https://github.com/Crucialmer/EverythingTB/releases/latest";
 
         static UpdateService()
         {
@@ -160,10 +160,11 @@ namespace EverythingToolbar.Services
 
                 string batchContent = $@"@echo off
 chcp 65001 >nul
-echo 正在安装 EverythingToolbar 更新并重启...
+echo 正在安装 EverythingTB 更新并重启...
 timeout /t 1 /nobreak >nul
 taskkill /F /IM EverythingToolbar.Launcher.exe >nul 2>&1
 taskkill /F /IM EverythingToolbar.exe >nul 2>&1
+taskkill /F /IM EverythingTB.exe >nul 2>&1
 timeout /t 1 /nobreak >nul
 
 robocopy ""{sourceDir}"" ""{targetDir}"" /E /XD ""Config"" /NJH /NJS /NDL /NC /NS >nul

@@ -9,7 +9,7 @@ namespace EverythingToolbar.Converters
     public class FontFamilyConverter : MarkupExtension, IValueConverter
     {
         public static readonly FontFamily DefaultFontFamily =
-            new("Microsoft YaHei UI, Microsoft YaHei, Segoe UI Variable Text, Segoe UI, sans-serif");
+            new("Segoe UI Variable Text, Microsoft YaHei UI, Microsoft YaHei, Segoe UI, sans-serif");
 
         public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {

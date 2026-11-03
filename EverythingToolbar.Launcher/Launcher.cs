@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,7 +17,7 @@ namespace EverythingToolbar.Launcher
 {
     internal static class Launcher
     {
-        private const string ToggleEventName = "EverythingToolbarToggleEvent";
+        private const string ToggleEventName = "EverythingTBToggleEvent";
         private const string StartSetupAssistantEventName = "StartSetupAssistantEvent";
         private const string MutexName = "EverythingToolbar.Launcher";
         private static TrayIcon? TrayIcon;

@@ -44,7 +44,7 @@ namespace EverythingToolbar.Settings
         public List<KeyValuePair<string, double>> ResultFontSizes { get; } =
         [
             new("9 pt", 9.0),
-            new("10 pt", 10.0),
+            new("10 pt (榛樿)", 10.0),
             new("11 pt (默认)", 11.0),
             new("12 pt", 12.0),
             new("13 pt", 13.0),
@@ -56,7 +56,7 @@ namespace EverythingToolbar.Settings
         public List<KeyValuePair<string, double>> SearchBoxFontSizes { get; } =
         [
             new("9 pt", 9.0),
-            new("10 pt", 10.0),
+            new("10 pt (榛樿)", 10.0),
             new("11 pt (默认)", 11.0),
             new("12 pt", 12.0),
             new("13 pt", 13.0),
@@ -243,9 +243,9 @@ namespace EverythingToolbar.Settings
                 new Uri("pack://application:,,,/EverythingToolbar;component/Images/AppIcon.ico")
             );
             SampleSearchResult = new SearchResult(
-                HighlightedPath: @"C:\Program Files\EverythingToolbar\Everything*Toolbar*.exe",
-                HighlightedFileName: "Everything*Toolbar*",
-                FullPathAndFileName: @"C:\Program Files\EverythingToolbar\EverythingToolbar.exe",
+                HighlightedPath: @"C:\Program Files\EverythingTB\Everything*TB*.exe",
+                HighlightedFileName: "Everything*TB*",
+                FullPathAndFileName: @"C:\Program Files\EverythingTB\EverythingTB.exe",
                 IsFile: true,
                 FileSize: 12345678,
                 DateModified: new FILETIME

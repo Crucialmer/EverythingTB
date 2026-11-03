@@ -1,10 +1,10 @@
-#include "InnoDependencyInstaller/CodeDependencies.iss"
+﻿#include "InnoDependencyInstaller/CodeDependencies.iss"
 #include "WixUninstaller.iss"
 #include "DotNetInstaller.iss"
 
-#define MyAppName "EverythingToolbar"
-#define MyAppPublisher "Stephan Rumswinkel"
-#define MyAppURL "https://www.github.com/srwi/EverythingToolbar"
+#define MyAppName "EverythingTB"
+#define MyAppPublisher "Crucialmer"
+#define MyAppURL "https://github.com/Crucialmer/EverythingTB"
 #define MyAppExeName "EverythingToolbar.Launcher.exe"
 
 [Setup]

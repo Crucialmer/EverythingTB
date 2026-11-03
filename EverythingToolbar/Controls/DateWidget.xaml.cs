@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows.Input;
 using System.Windows.Threading;
@@ -21,7 +21,7 @@ namespace EverythingToolbar.Controls
 
             _timer = new DispatcherTimer(DispatcherPriority.Background)
             {
-                Interval = TimeSpan.FromSeconds(1)
+                Interval = TimeSpan.FromSeconds(2)
             };
             _timer.Tick += (_, _) => UpdateDateTimeDisplay();
             Loaded += (_, _) => _timer.Start();

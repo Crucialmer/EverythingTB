@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -277,7 +277,7 @@
     <value>Enable autostart</value>
   </data>
   <data name="SettingsEnableAutostartHelp" xml:space="preserve">
-    <value>Automatically starts EverythingToolbar when Windows starts</value>
+    <value>Automatically starts EverythingTB when Windows starts</value>
   </data>
   <data name="SettingsEnableHistory" xml:space="preserve">
     <value>Enable search history</value>
@@ -634,7 +634,7 @@
     <value>Notify when a new version is available</value>
   </data>
   <data name="SettingsReplaceStartMenuHelp" xml:space="preserve">
-    <value>Replace the default Windows Start menu search with EverythingToolbar</value>
+    <value>Replace the default Windows Start menu search with EverythingTB</value>
   </data>
   <data name="MessageBoxOk" xml:space="preserve">
     <value>OK</value>
@@ -667,7 +667,7 @@
     <value>Enable system tray icon</value>
   </data>
   <data name="SettingsEnableSystemTrayIconHelp" xml:space="preserve">
-    <value>Enables the system tray icon to be able to quit EverythingToolbar easily</value>
+    <value>Enables the system tray icon to be able to quit EverythingTB easily</value>
   </data>
   <data name="SettingsSearchIcon" xml:space="preserve">
     <value>Search icon</value>
@@ -727,7 +727,7 @@
     <value>Uses Windows 10 styles to match certain legacy taskbar modifications</value>
   </data>
   <data name="UpdateSuccessfulBannerHeader" xml:space="preserve">
-    <value>EverythingToolbar {version} was updated successfully!</value>
+    <value>EverythingTB {version} was updated successfully!</value>
   </data>
   <data name="UpdateSuccessfulBannerText" xml:space="preserve">
     <value>If it makes your life easier, consider donating to support future updates.</value>

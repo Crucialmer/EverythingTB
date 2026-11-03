@@ -33,7 +33,7 @@
     <b:Themed Surface="TaskbarSurface" />
   </i:Interaction.Behaviors>
 
-  <Border Background="{DynamicResource SearchWindowBackground}" CornerRadius="12">
+  <Border Background="{DynamicResource SearchWindowBackground}" BorderBrush="{DynamicResource SearchWindowBorder}" BorderThickness="1" CornerRadius="14">
     <Grid Name="ContentGrid">
       <Grid.RowDefinitions>
         <RowDefinition Height="{DynamicResource FirstGridRowHeight}" />
