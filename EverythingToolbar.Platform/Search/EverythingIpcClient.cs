@@ -456,10 +456,19 @@ namespace EverythingToolbar.Platform.Search
 
         public void SetInstanceName(string name)
         {
-            if (name != string.Empty)
-                Logger.Info("Setting Everything instance name: " + name);
+            if (string.IsNullOrEmpty(name))
+                return;
 
-            Everything_SetInstanceName(name);
+            Logger.Info("Setting Everything instance name: " + name);
+
+            try
+            {
+                Everything_SetInstanceName(name);
+            }
+            catch (EntryPointNotFoundException)
+            {
+                Logger.Warn("Everything_SetInstanceName entry point not found in Everything64.dll");
+            }
         }
 
         public void IncrementRunCount(string path)

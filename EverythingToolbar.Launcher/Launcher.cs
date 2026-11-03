@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -143,6 +143,11 @@ namespace EverythingToolbar.Launcher
                         }
                     }
                 };
+
+                Dispatcher.BeginInvoke(new Action(() =>
+                {
+                    _controller.ShowStandalone();
+                }), System.Windows.Threading.DispatcherPriority.Loaded);
             }
 
             private void ShowSetupAssistantIfNeeded(TrayIcon icon)
