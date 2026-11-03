@@ -44,8 +44,8 @@ namespace EverythingToolbar.Settings
         public List<KeyValuePair<string, double>> ResultFontSizes { get; } =
         [
             new("9 pt", 9.0),
-            new("10 pt (榛樿)", 10.0),
-            new("11 pt (默认)", 11.0),
+            new("10 pt (\u9ED8\u8BA4)", 10.0),
+            new("11 pt", 11.0),
             new("12 pt", 12.0),
             new("13 pt", 13.0),
             new("14 pt", 14.0),
@@ -56,8 +56,8 @@ namespace EverythingToolbar.Settings
         public List<KeyValuePair<string, double>> SearchBoxFontSizes { get; } =
         [
             new("9 pt", 9.0),
-            new("10 pt (榛樿)", 10.0),
-            new("11 pt (默认)", 11.0),
+            new("10 pt (\u9ED8\u8BA4)", 10.0),
+            new("11 pt", 11.0),
             new("12 pt", 12.0),
             new("13 pt", 13.0),
             new("14 pt", 14.0),
@@ -67,29 +67,61 @@ namespace EverythingToolbar.Settings
 
         public List<KeyValuePair<string, string>> FontWeightsList { get; } =
         [
-            new("常规 (Normal)", "Normal"),
-            new("中等 (Medium)", "Medium"),
-            new("半粗 (SemiBold)", "SemiBold"),
-            new("加粗 (Bold)", "Bold"),
+            new("\u5E38\u89C4 (Normal)", "Normal"),
+            new("\u4E2D\u7B49 (Medium)", "Medium"),
+            new("\u534A\u7C97 (SemiBold)", "SemiBold"),
+            new("\u52A0\u7C97 (Bold)", "Bold"),
         ];
 
         public List<KeyValuePair<string, string>> AvailableFontFamilies { get; } = GetAvailableFontFamilies();
+
+        private static string GetFontDisplayName(FontFamily font)
+        {
+            try
+            {
+                var zhLang = System.Windows.Markup.XmlLanguage.GetLanguage("zh-cn");
+                if (font.FamilyNames.TryGetValue(zhLang, out var zhName) && !string.IsNullOrWhiteSpace(zhName))
+                {
+                    if (!string.Equals(zhName, font.Source, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return $"{zhName} ({font.Source})";
+                    }
+                    return zhName;
+                }
+
+                var currentLang = System.Windows.Markup.XmlLanguage.GetLanguage(System.Globalization.CultureInfo.CurrentUICulture.IetfLanguageTag);
+                if (font.FamilyNames.TryGetValue(currentLang, out var currentName) && !string.IsNullOrWhiteSpace(currentName))
+                {
+                    if (!string.Equals(currentLang.IetfLanguageTag, zhLang.IetfLanguageTag, StringComparison.OrdinalIgnoreCase)
+                        && !string.Equals(currentName, font.Source, StringComparison.OrdinalIgnoreCase))
+                    {
+                        return $"{currentName} ({font.Source})";
+                    }
+                    return currentName;
+                }
+
+                var enLang = System.Windows.Markup.XmlLanguage.GetLanguage("en-us");
+                if (font.FamilyNames.TryGetValue(enLang, out var enName) && !string.IsNullOrWhiteSpace(enName))
+                {
+                    return enName;
+                }
+            }
+            catch
+            {
+                // Fallback
+            }
+
+            return font.Source;
+        }
 
         private static List<KeyValuePair<string, string>> GetAvailableFontFamilies()
         {
             var list = new List<KeyValuePair<string, string>>
             {
-                new("系统默认 / macOS 26 (Segoe UI & 微软雅黑)", "Default"),
-                new("Segoe UI Variable (Win11 / Apple 风格)", "Segoe UI Variable Text"),
-                new("Microsoft YaHei (微软雅黑)", "Microsoft YaHei UI"),
-                new("HarmonyOS Sans (鸿蒙黑体)", "HarmonyOS Sans SC"),
-                new("PingFang SC (苹方)", "PingFang SC"),
-                new("Cascadia Code (等宽代码)", "Cascadia Code"),
-                new("JetBrains Mono (等宽代码)", "JetBrains Mono"),
-                new("Consolas (等宽经典)", "Consolas"),
+                new("\u7CFB\u7EDF\u9ED8\u8BA4 / macOS 26 (\u52A8\u6001 Segoe UI & \u5FAE\u8F6F\u96C5\u9ED1)", "Default"),
             };
 
-            var seen = new HashSet<string>(list.Select(x => x.Value), StringComparer.OrdinalIgnoreCase)
+            var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
             {
                 "Default"
             };
@@ -97,17 +129,23 @@ namespace EverythingToolbar.Settings
             try
             {
                 var installedFonts = System.Windows.Media.Fonts.SystemFontFamilies
-                    .Select(f => f.Source)
-                    .Where(name => !string.IsNullOrWhiteSpace(name))
-                    .Distinct(StringComparer.OrdinalIgnoreCase)
-                    .OrderBy(name => name)
+                    .Where(f => !string.IsNullOrWhiteSpace(f.Source))
+                    .Select(f => new
+                    {
+                        Family = f,
+                        Source = f.Source,
+                        DisplayName = GetFontDisplayName(f)
+                    })
+                    .GroupBy(x => x.Source, StringComparer.OrdinalIgnoreCase)
+                    .Select(g => g.First())
+                    .OrderBy(x => x.DisplayName, StringComparer.CurrentCultureIgnoreCase)
                     .ToList();
 
-                foreach (var fontName in installedFonts)
+                foreach (var font in installedFonts)
                 {
-                    if (seen.Add(fontName))
+                    if (seen.Add(font.Source))
                     {
-                        list.Add(new KeyValuePair<string, string>(fontName, fontName));
+                        list.Add(new KeyValuePair<string, string>(font.DisplayName, font.Source));
                     }
                 }
             }
@@ -119,7 +157,7 @@ namespace EverythingToolbar.Settings
             return list;
         }
 
-        public List<KeyValuePair<string, string>> ItemTemplates { get; } =
+                public List<KeyValuePair<string, string>> ItemTemplates { get; } =
         [
             new(Resources.ItemTemplateCompact, "Compact"),
             new(Resources.ItemTemplateCompactDetailed, "CompactDetailed"),
