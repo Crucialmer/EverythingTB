@@ -12,7 +12,7 @@ _其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
 
 - **品牌全维升级为 EverythingTB**：
   - 项目名称、发布包名、软件窗口及应用内标识全面升级为 **EverythingTB**，更加简洁利落。
-  - 单一纯绿色发行包更名为 **`EverythingTB.zip`**，内置一键启动脚本 `启动EverythingTB.bat`。
+  - 单一纯绿色发行包更名为 **`EverythingTB.zip`**，解压后直接双击带有图标的 `EverythingTB.exe` 即可畅爽搜索。
 
 - **深度融合 macOS 26 设计美学（macOS 26 Design Aesthetic）**：
   - **浮动毛玻璃晶透卡片（Floating Translucent Glass Card）**：搜索主弹窗采用 14px 优雅大圆角与 1px 微光半透明外轮廓线（Subtle 1px Luminous Translucent Border），光影自然通透，呈现极致高级的 macOS 悬浮卡片质感。
@@ -91,5 +91,5 @@ EverythingTB 在 Windows 10 和 Windows 11 上均可顺畅运行，原生支持 
 ### 快速启动（绿色便携版）
 1. 从 [GitHub Releases](https://github.com/Crucialmer/EverythingTB/releases/latest) 下载 `EverythingTB.zip`。
 2. 解压到任意您喜欢的文件夹。
-3. 双击运行 `启动EverythingTB.bat`（或 `EverythingToolbar.Launcher.exe` / `EverythingTB.exe`）。
+3. 直接双击运行带有图标的 `EverythingTB.exe` 即可。
 4. 所有的配置、规则及运行日志均隔离在软件根目录 `./Config/` 下，绝不写入 Windows 注册表与 `%APPDATA%`。

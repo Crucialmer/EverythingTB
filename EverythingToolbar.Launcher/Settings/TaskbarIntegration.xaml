@@ -75,7 +75,7 @@
                       <Image
                         Width="500"
                         RenderOptions.BitmapScalingMode="Fant"
-                        Source="pack://application:,,,/EverythingToolbar.Launcher;component/Images/PinToTaskbar.png"
+                        Source="pack://application:,,,/EverythingTB;component/Images/PinToTaskbar.png"
                         Stretch="Uniform" />
                     </ToolTip>
                   </StackPanel.ToolTip>

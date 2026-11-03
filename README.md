@@ -12,7 +12,7 @@ Instant file search integration for Windows powered by [Everything](https://www.
 
 - **Complete Brand Evolution: EverythingTB**:
   - The project, release package, application UI, and updater have evolved into **EverythingTB**.
-  - Distributed as a pure portable package: **`EverythingTB.zip`**, including `启动EverythingTB.bat`.
+  - Distributed as a pure portable package: **`EverythingTB.zip`**, directly run `EverythingTB.exe`.
 
 - **macOS 26 Design Aesthetic**:
   - **Floating Translucent Glass Card**: Search window crafted with 14px smooth rounded corners and a subtle 1px luminous translucent border outline, delivering a floating frosted acrylic aesthetic.
@@ -92,5 +92,5 @@ EverythingTB runs smoothly on Windows 10 and Windows 11, with native support for
 ### Quick Start (Portable)
 1. Download `EverythingTB.zip` from [GitHub Releases](https://github.com/Crucialmer/EverythingTB/releases/latest).
 2. Extract to any folder you prefer.
-3. Run `启动EverythingTB.bat` (or `EverythingToolbar.Launcher.exe` / `EverythingTB.exe`).
+3. Directly run `EverythingTB.exe`.
 4. Settings, rules, and logs are isolated inside the `./Config/` directory.
