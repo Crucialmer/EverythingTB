@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
@@ -14,7 +14,6 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EverythingToolbar.Deskband\EverythingToolbar.Deskband.csproj" />
     <ProjectReference Include="..\EverythingToolbar\EverythingToolbar.csproj" />
     <ProjectReference Include="..\EverythingToolbar.Core\EverythingToolbar.Core.csproj" />
     <ProjectReference Include="..\EverythingToolbar.Platform\EverythingToolbar.Platform.csproj" />
@@ -49,26 +48,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <COMReference Include="IWshRuntimeLibrary">
-      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="Shell32">
-      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="NativeTray" />
     <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" />
     <PackageReference Include="NLog" />
@@ -89,16 +68,14 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <PropertyGroup Condition="'$(Platform)'=='x64'">
-    <PreBuildEvent>taskkill /IM EverythingToolbar.Launcher.exe /F 2&gt;nul &amp;set errorlevel=0
-xcopy $(SolutionDir)EverythingSDK\x64\$(Configuration)\Everything64.dll $(TargetDir) /r /y
-xcopy $(SolutionDir)EverythingSDK3\x64\$(Configuration)\Everything3.dll $(TargetDir) /r /y
-Exit 0</PreBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Platform)'=='ARM64'">
-    <PreBuildEvent>taskkill /IM EverythingToolbar.Launcher.exe /F 2&gt;nul &amp;set errorlevel=0
-xcopy $(SolutionDir)EverythingSDK\ARM64\$(Configuration)\Everything64.dll $(TargetDir) /r /y
-xcopy $(SolutionDir)EverythingSDK3\ARM64\$(Configuration)\Everything3.dll $(TargetDir) /r /y
-Exit 0</PreBuildEvent>
-  </PropertyGroup>
+  <ItemGroup Condition="'$(Platform)'=='x64'">
+    <None Include="..\EverythingSDK\x64\Release\Everything64.dll">
+      <Link>Everything64.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\EverythingSDK3\x64\Release\Everything3.dll">
+      <Link>Everything3.dll</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

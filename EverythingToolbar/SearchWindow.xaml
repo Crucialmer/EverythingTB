@@ -21,13 +21,14 @@
   ShowAccentBorder="True"
   ShowInTaskbar="False"
   UseLayoutRounding="True"
+  FontFamily="Segoe UI Variable Text, SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, HarmonyOS Sans, Microsoft YaHei UI"
   mc:Ignorable="d">
   <i:Interaction.Behaviors>
     <b:FlowDirectionAwareness />
     <b:Themed Surface="TaskbarSurface" />
   </i:Interaction.Behaviors>
 
-  <Border Background="{DynamicResource SearchWindowBackground}">
+  <Border Background="{DynamicResource SearchWindowBackground}" CornerRadius="12">
     <Grid Name="ContentGrid">
       <Grid.RowDefinitions>
         <RowDefinition Height="{DynamicResource FirstGridRowHeight}" />

@@ -314,16 +314,16 @@ namespace EverythingToolbar.Services
         }
 
         private static readonly SolidColorBrush Win11LightBackgroundBrush = ColorHelper.ToFrozenBrush(
-            System.Windows.Media.Color.FromArgb(0xE0, 0xF5, 0xF5, 0xF5)
+            System.Windows.Media.Color.FromArgb(0xE6, 0xF6, 0xF6, 0xF8)
         );
         private static readonly SolidColorBrush Win10LightBackgroundBrush = ColorHelper.ToFrozenBrush(
             System.Windows.Media.Color.FromArgb(0xDD, 0xEE, 0xEE, 0xEE)
         );
         private static readonly SolidColorBrush Win11DarkBackgroundBrush = ColorHelper.ToFrozenBrush(
-            System.Windows.Media.Color.FromArgb(0xDA, 0x25, 0x25, 0x25)
+            System.Windows.Media.Color.FromArgb(0xD9, 0x1A, 0x1A, 0x22)
         );
         private static readonly SolidColorBrush Win10DarkBackgroundBrush = ColorHelper.ToFrozenBrush(
-            System.Windows.Media.Color.FromArgb(0xF0, 0x25, 0x25, 0x25)
+            System.Windows.Media.Color.FromArgb(0xF0, 0x1A, 0x1A, 0x22)
         );
 
         private bool IsTaskbarAccentColorEnabled(Theme systemTheme)

@@ -5,8 +5,6 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EverythingSDK\EverythingSDK.vcxproj" />
-    <ProjectReference Include="..\EverythingSDK3\EverythingSDK3.vcxproj" />
     <ProjectReference Include="..\EverythingToolbar.Core\EverythingToolbar.Core.csproj" />
   </ItemGroup>
   <ItemGroup>

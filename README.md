@@ -9,6 +9,21 @@ _Read in other languages: [English](README.md), [中文](README.zh-CN.md)_
 
 Instant file search integration for the Windows taskbar powered by [Everything](https://www.voidtools.com/).
 
+## 🚀 v1.0 绿色便携版 (.NET 10 & macOS 26 设计美学)
+
+此版本为全新的 **v1.0 纯绿色便携定制版**：
+- **.NET 10 LTS 升级**：基于全新 `.NET 10.0` 运行时构建，具有极速响应与超低内存开销。
+- **macOS 26 设计美学**：
+  - 深度磨砂亚克力玻璃（Frosted Acrylic Glass）与 Obsidian/Milk White 双色调。
+  - 胶囊搜索条（Capsule Pill）与圆角搜索框，精致聚焦微光。
+  - 8px 优雅圆角列表项（Spotlight Row Selection）。
+  - 适配现代系统字族（Segoe UI Variable / SF Pro / 微软雅黑）。
+- **100% 纯绿色免安装架构**：
+  - 抛弃侵入式 COM Deskband，采用无侵入 Launcher 模式。
+  - **零系统写入**：配置（`settings.ini`）、规则（`rules.xml`）与日志（`EverythingToolbar.log`）全部严格保存在程序根目录下的 `./Config` 文件夹中，完全不向 `%APPDATA%`、`%TEMP%` 或 Windows 注册表写入任何多余文件。
+- **框架依赖轻量化发布**：由于系统已预装 .NET 10，软件未打包冗余运行时，解压即用，体积极致轻盈。
+- **发布目录**：`release/EverythingToolbar-v1.0-Portable-x64/` (包含一键启动批处理与完整绿色包 `EverythingToolbar-v1.0-Portable-x64.zip`)。
+
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/demo.gif" alt="EverythingToolbar in action" width="80%">
 
 ## 🌟 Features

@@ -1,10 +1,8 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.IO;
-using IWshRuntimeLibrary;
 using Microsoft.Win32;
 using NLog;
-using Shell32;
 using File = System.IO.File;
 
 namespace EverythingToolbar.Launcher
@@ -32,18 +30,26 @@ namespace EverythingToolbar.Launcher
                 {
                     var executableFileName = Path.GetFileName(executablePath);
                     var lnkFiles = Directory.GetFiles(taskBarPath, "*.lnk");
-                    var shell = new Shell();
-                    foreach (var lnkFile in lnkFiles)
+                    var shellType = Type.GetTypeFromProgID("Shell.Application");
+                    if (shellType != null)
                     {
-                        var folder = shell.NameSpace(Path.GetDirectoryName(lnkFile));
-                        var folderItem = folder.ParseName(Path.GetFileName(lnkFile));
-                        if (folderItem is { IsLink: true })
+                        dynamic? shell = Activator.CreateInstance(shellType);
+                        if (shell != null)
                         {
-                            var link = (ShellLinkObject)folderItem.GetLink;
-                            var linkFileName = Path.GetFileName(link.Path);
+                            foreach (var lnkFile in lnkFiles)
+                            {
+                                dynamic? folder = shell.NameSpace(Path.GetDirectoryName(lnkFile));
+                                dynamic? folderItem = folder?.ParseName(Path.GetFileName(lnkFile));
+                                if (folderItem != null && (bool)folderItem.IsLink)
+                                {
+                                    dynamic? link = folderItem.GetLink;
+                                    string? linkPath = (string?)link?.Path;
+                                    var linkFileName = Path.GetFileName(linkPath);
 
-                            if (linkFileName == executableFileName)
-                                return lnkFile;
+                                    if (linkFileName == executableFileName)
+                                        return lnkFile;
+                                }
+                            }
                         }
                     }
                 }
@@ -66,11 +72,18 @@ namespace EverythingToolbar.Launcher
             if (File.Exists(taskbarShortcutPath))
                 File.Delete(taskbarShortcutPath);
 
-            var shell = new WshShell();
-            var shortcut = (IWshShortcut)shell.CreateShortcut(taskbarShortcutPath);
-            shortcut.TargetPath = executableFilename;
-            shortcut.IconLocation = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, iconName);
-            shortcut.Save();
+            var wshType = Type.GetTypeFromProgID("WScript.Shell");
+            if (wshType != null)
+            {
+                dynamic? shell = Activator.CreateInstance(wshType);
+                if (shell != null)
+                {
+                    dynamic shortcut = shell.CreateShortcut(taskbarShortcutPath);
+                    shortcut.TargetPath = executableFilename;
+                    shortcut.IconLocation = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, iconName);
+                    shortcut.Save();
+                }
+            }
 
             if (!restartExplorer)
                 return;

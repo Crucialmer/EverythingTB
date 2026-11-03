@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Reflection;
 using NLog;
@@ -72,7 +72,7 @@ namespace EverythingToolbar.App.Helpers
         {
             var logfile = new FileTarget("logfile")
             {
-                FileName = Path.Combine(Path.GetTempPath(), "EverythingToolbar.log"),
+                FileName = Path.Combine(ConfigPaths.GetConfigDirectory(), "EverythingToolbar.log"),
                 ArchiveEvery = FileArchivePeriod.Day,
                 ArchiveNumbering = ArchiveNumberingMode.Date,
                 MaxArchiveFiles = 3,
