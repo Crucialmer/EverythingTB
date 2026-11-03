@@ -148,9 +148,9 @@ namespace EverythingToolbar.Services
 
                 // Locate the directory containing EverythingToolbar.Launcher.exe
                 string sourceDir = extractDir;
-                if (!File.Exists(Path.Combine(sourceDir, "EverythingTB.exe")) && !File.Exists(Path.Combine(sourceDir, "EverythingToolbar.Launcher.exe")))
+                if (!File.Exists(Path.Combine(sourceDir, "EverythingTB.exe")))
                 {
-                    var match = Directory.GetFiles(extractDir, "EverythingTB.exe", SearchOption.AllDirectories).FirstOrDefault() ?? Directory.GetFiles(extractDir, "EverythingToolbar.Launcher.exe", SearchOption.AllDirectories).FirstOrDefault();
+                    var match = Directory.GetFiles(extractDir, "EverythingTB.exe", SearchOption.AllDirectories).FirstOrDefault();
                     if (match != null)
                         sourceDir = Path.GetDirectoryName(match)!;
                 }
@@ -162,8 +162,6 @@ namespace EverythingToolbar.Services
 chcp 65001 >nul
 echo 正在安装 EverythingTB 更新并重启...
 timeout /t 1 /nobreak >nul
-taskkill /F /IM EverythingToolbar.Launcher.exe >nul 2>&1
-taskkill /F /IM EverythingToolbar.exe >nul 2>&1
 taskkill /F /IM EverythingTB.exe >nul 2>&1
 timeout /t 1 /nobreak >nul
 
@@ -172,13 +170,7 @@ if errorlevel 8 (
     xcopy /Y /E /I /Q ""{sourceDir}\*"" ""{targetDir}\"" >nul
 )
 
-if exist ""{targetDir}\EverythingTB.exe"" (
-    start """" /d ""{targetDir}"" ""{targetDir}\EverythingTB.exe""
-) else if exist ""{targetDir}\EverythingToolbar.Launcher.exe"" (
-    start """" /d ""{targetDir}"" ""{targetDir}\EverythingToolbar.Launcher.exe""
-) else (
-    start """" /d ""{targetDir}"" ""{targetDir}\EverythingToolbar.exe""
-)
+start """" /d ""{targetDir}"" ""{targetDir}\EverythingTB.exe""
 rd /S /Q ""{sourceDir}"" >nul 2>&1
 del ""{zipFilePath}"" >nul 2>&1
 (goto) 2>nul & del ""%~f0""

@@ -1,4 +1,4 @@
-﻿_Read in other languages: [English](README.md), [中文](README.zh-CN.md)_
+_Read in other languages: [English](README.md), [中文](README.zh-CN.md)_
 
 # <img src="EverythingToolbar/Images/AppIcon.ico" width="24"> EverythingTB
 
@@ -8,11 +8,15 @@
 
 Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingTB v1.7.2 Highlights
+## 🚀 EverythingTB v1.7.3 Highlights
 
-- **Fix Auto-Updater Restart " File Not Found\ Error**:
- - Enhanced update extraction and restart batch script to accurately resolve both EverythingTB.exe and legacy EverythingToolbar.Launcher.exe.
- - Added dual-launcher compatibility forwarder ensuring smooth in-place restart across all versions without file not found dialogs.
+- **Pure Pristine Architecture (Zero Legacy Overhead)**:
+  - Completely stripped all backward-compatibility stubs and legacy batch scripts; distribution package now contains solely the native **`EverythingTB.exe`**.
+  - System tray tooltip, mutex identifiers, and auto-restart pipelines updated strictly to EverythingTB branding.
+  - Search history now fully portable under `Config/history.xml` for 100% self-contained green deployment.
+
+- **Unified About Page & Repository Links**:
+  - Banner title and all community/FAQ hyperlinks refreshed to point directly to `Crucialmer/EverythingTB`.
 
 - **Hide Empty Search Enabled by Default (Spotlight Minimal Experience)**:
   - Settings → Search → Behavior → `Hide empty search` is now enabled out-of-the-box.

@@ -15,7 +15,7 @@ namespace EverythingToolbar.Launcher
         {
             _notifyIcon = new TrayIconHost
             {
-                ToolTipText = "EverythingToolbar",
+                ToolTipText = "EverythingTB",
                 ThemeMode = TrayThemeMode.System,
                 IconSource = _iconSource = CreateThemedIcon(),
                 IsVisible = false,

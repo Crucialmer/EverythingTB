@@ -5,7 +5,7 @@
 #define MyAppName "EverythingTB"
 #define MyAppPublisher "Crucialmer"
 #define MyAppURL "https://github.com/Crucialmer/EverythingTB"
-#define MyAppExeName "EverythingToolbar.Launcher.exe"
+#define MyAppExeName "EverythingTB.exe"
 
 [Setup]
 AppId={{b5f0ac2d-98da-4392-9d12-78444db9caa9}

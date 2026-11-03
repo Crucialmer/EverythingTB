@@ -18,8 +18,8 @@ namespace EverythingToolbar.Launcher
     internal static class Launcher
     {
         private const string ToggleEventName = "EverythingTBToggleEvent";
-        private const string StartSetupAssistantEventName = "StartSetupAssistantEvent";
-        private const string MutexName = "EverythingToolbar.Launcher";
+        private const string StartSetupAssistantEventName = "EverythingTBStartSetupAssistantEvent";
+        private const string MutexName = "EverythingTBMutex";
         private static TrayIcon? TrayIcon;
 
         private class LauncherWindow : Window

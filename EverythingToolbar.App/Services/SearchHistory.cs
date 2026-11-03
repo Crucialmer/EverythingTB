@@ -15,8 +15,7 @@ namespace EverythingToolbar.App.Services
     {
         private static readonly ILogger Logger = ToolbarLogger.GetLogger<SearchHistory>();
         private static readonly string HistoryPath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-            "EverythingToolbar",
+            ConfigPaths.GetConfigDirectory(),
             "history.xml"
         );
 

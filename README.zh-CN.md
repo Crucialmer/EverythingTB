@@ -1,4 +1,4 @@
-﻿_其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
+_其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
 
 # <img src="EverythingToolbar/Images/AppIcon.ico" width="24"> EverythingTB
 
@@ -8,11 +8,15 @@
 
 为 Windows 任务栏提供即时文件搜索集成，由 [Everything](https://www.voidtools.com/) 驱动。
 
-## 🚀 EverythingTB v1.7.2 特性亮点
+## 🚀 EverythingTB v1.7.3 特性亮点
 
-- **修复应用内自动更新重启找不到文件的致命异常**：
-  - 全面兼容新旧版本自更新逻辑，重构更新脚本以支持定位 EverythingTB.exe 与旧版 EverythingToolbar.Launcher.exe。
-  - 发布包内置兼容启动引导，无论从旧版（v1.4~v1.6）还是新版升级，均可平滑自动重启，彻底解决「找不到文件」弹窗。
+- **极致纯净架构（零历史包袱，100% 专注 EverythingTB）**：
+  - 彻底移除所有过渡兼容文件与遗留脚本，压缩包内仅保留唯一原生主程序 **`EverythingTB.exe`**。
+  - 全面清理代码库中的历史残留：更新服务直接拉起 EverythingTB、托盘悬浮提示升级为 EverythingTB、开机自启全面适配 EverythingTB 并自动清理旧项。
+  - 历史搜索记录完全绿色化（`Config/history.xml`），实现真正的全便携免安装。
+
+- **关于页面与链接全维对齐**：
+  - 「关于」页面横幅标题与所有官方文档、代码仓库链接全面更新至最新的 EverythingTB 项目主页。
 
 - **隐藏空搜索默认开启（Spotlight 极简启动体验）**：
   - 「设置」→「搜索」→「行为」中的「隐藏空搜索」默认调整为**开启**状态。

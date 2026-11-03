@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.IO;
 using Microsoft.Win32;
 using NLog;
@@ -8,7 +8,8 @@ namespace EverythingToolbar.Services
     public sealed class AutostartAdapter : IAutostart
     {
         private const string RegistryKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
-        private const string RegistryValueName = "EverythingToolbar";
+        private const string RegistryValueName = "EverythingTB";
+        private const string LegacyRegistryValueName = "EverythingToolbar";
 
         private static readonly ILogger Logger = ToolbarLogger.GetLogger<AutostartAdapter>();
 
@@ -23,7 +24,7 @@ namespace EverythingToolbar.Services
             try
             {
                 using var key = Registry.CurrentUser.OpenSubKey(RegistryKeyPath);
-                var registryValue = key?.GetValue(RegistryValueName) as string;
+                var registryValue = (key?.GetValue(RegistryValueName) ?? key?.GetValue(LegacyRegistryValueName)) as string;
 
                 if (string.IsNullOrEmpty(registryValue))
                     return false;
@@ -51,10 +52,12 @@ namespace EverythingToolbar.Services
                     var executablePath = Environment.ProcessPath;
                     if (!string.IsNullOrEmpty(executablePath))
                         key?.SetValue(RegistryValueName, "\"" + executablePath + "\"");
+                    key?.DeleteValue(LegacyRegistryValueName, false);
                 }
                 else
                 {
                     key?.DeleteValue(RegistryValueName, false);
+                    key?.DeleteValue(LegacyRegistryValueName, false);
                 }
             }
             catch (Exception e)

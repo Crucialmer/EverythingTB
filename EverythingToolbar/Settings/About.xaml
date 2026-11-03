@@ -47,7 +47,7 @@
                 Margin="0 0 0 1"
                 FontTypography="Title"
                 Foreground="#FFFFFF"
-                Text="EverythingToolbar" />
+                Text="EverythingTB" />
               <ui:TextBlock
                 Margin="0 0 0 5"
                 FontTypography="Subtitle"
@@ -173,26 +173,26 @@
           Margin="8 8 0 0"
           Padding="4"
           Content="{x:Static properties:Resources.AboutFAQ}"
-          NavigateUri="https://github.com/Crucialmer/EverythingToolbar/blob/develop/FAQ.md"
-          ToolTip="https://github.com/Crucialmer/EverythingToolbar/blob/develop/FAQ.md" />
+          NavigateUri="https://github.com/Crucialmer/EverythingTB/blob/develop/FAQ.md"
+          ToolTip="https://github.com/Crucialmer/EverythingTB/blob/develop/FAQ.md" />
         <ui:HyperlinkButton
           Margin="8 0 0 0"
           Padding="4"
           Content="{x:Static properties:Resources.AboutSourceCode}"
-          NavigateUri="https://github.com/Crucialmer/EverythingToolbar"
-          ToolTip="https://github.com/Crucialmer/EverythingToolbar" />
+          NavigateUri="https://github.com/Crucialmer/EverythingTB"
+          ToolTip="https://github.com/Crucialmer/EverythingTB" />
         <ui:HyperlinkButton
           Margin="8 0 0 0"
           Padding="4"
           Content="{x:Static properties:Resources.AboutStarOnGitHub}"
-          NavigateUri="https://github.com/Crucialmer/EverythingToolbar"
-          ToolTip="https://github.com/Crucialmer/EverythingToolbar" />
+          NavigateUri="https://github.com/Crucialmer/EverythingTB"
+          ToolTip="https://github.com/Crucialmer/EverythingTB" />
         <ui:HyperlinkButton
           Margin="8 0 0 0"
           Padding="4"
           Content="{x:Static properties:Resources.AboutDonation}"
-          NavigateUri="https://github.com/Crucialmer/EverythingToolbar#-support"
-          ToolTip="https://github.com/Crucialmer/EverythingToolbar#-support" />
+          NavigateUri="https://github.com/Crucialmer/EverythingTB#-support"
+          ToolTip="https://github.com/Crucialmer/EverythingTB#-support" />
       </StackPanel>
     </Grid>
   </ScrollViewer>
