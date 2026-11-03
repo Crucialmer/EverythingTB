@@ -11,7 +11,8 @@
   xmlns:markup="clr-namespace:EverythingToolbar.Markup"
   HorizontalAlignment="Stretch"
   GotFocus="OnGotFocus"
-  KeyDown="OnKeyDown">
+  KeyDown="OnKeyDown"
+  FontFamily="{Binding Source={markup:Service {x:Type app:ISettings}}, Path=FontFamily, Converter={converters:FontFamilyConverter}}">
   <i:Interaction.Behaviors>
     <b:Themed Surface="TaskbarSurface" />
   </i:Interaction.Behaviors>

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -70,6 +71,52 @@ namespace EverythingToolbar.Settings
             new("半粗 (SemiBold)", "SemiBold"),
             new("加粗 (Bold)", "Bold"),
         ];
+
+        public List<KeyValuePair<string, string>> AvailableFontFamilies { get; } = GetAvailableFontFamilies();
+
+        private static List<KeyValuePair<string, string>> GetAvailableFontFamilies()
+        {
+            var list = new List<KeyValuePair<string, string>>
+            {
+                new("系统默认 / macOS 26 (Segoe UI & 微软雅黑)", "Default"),
+                new("Segoe UI Variable (Win11 / Apple 风格)", "Segoe UI Variable Text"),
+                new("Microsoft YaHei (微软雅黑)", "Microsoft YaHei UI"),
+                new("HarmonyOS Sans (鸿蒙黑体)", "HarmonyOS Sans SC"),
+                new("PingFang SC (苹方)", "PingFang SC"),
+                new("Cascadia Code (等宽代码)", "Cascadia Code"),
+                new("JetBrains Mono (等宽代码)", "JetBrains Mono"),
+                new("Consolas (等宽经典)", "Consolas"),
+            };
+
+            var seen = new HashSet<string>(list.Select(x => x.Value), StringComparer.OrdinalIgnoreCase)
+            {
+                "Default"
+            };
+
+            try
+            {
+                var installedFonts = System.Windows.Media.Fonts.SystemFontFamilies
+                    .Select(f => f.Source)
+                    .Where(name => !string.IsNullOrWhiteSpace(name))
+                    .Distinct(StringComparer.OrdinalIgnoreCase)
+                    .OrderBy(name => name)
+                    .ToList();
+
+                foreach (var fontName in installedFonts)
+                {
+                    if (seen.Add(fontName))
+                    {
+                        list.Add(new KeyValuePair<string, string>(fontName, fontName));
+                    }
+                }
+            }
+            catch
+            {
+                // Fallback
+            }
+
+            return list;
+        }
 
         public List<KeyValuePair<string, string>> ItemTemplates { get; } =
         [

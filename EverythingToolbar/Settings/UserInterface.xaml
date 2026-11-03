@@ -42,6 +42,17 @@
                   SelectedValuePath="Value" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>
+            <controls:SettingItem Margin="0 14 0 0" Title="界面字体" HelpText="自定义全局显示字体系列（支持 macOS 风格、系统默认、HarmonyOS 及所有本地已安装字体）">
+              <controls:SettingItem.SettingContent>
+                <ComboBox
+                  HorizontalAlignment="Right"
+                  MinWidth="220"
+                  DisplayMemberPath="Key"
+                  ItemsSource="{Binding AvailableFontFamilies}"
+                  SelectedValue="{Binding Settings.FontFamily, Mode=TwoWay}"
+                  SelectedValuePath="Value" />
+              </controls:SettingItem.SettingContent>
+            </controls:SettingItem>
             <controls:SettingItem Margin="0 14 0 0" Title="结果字体大小" HelpText="调整搜索结果列表中文件名的显示字号（默认 11 pt）">
               <controls:SettingItem.SettingContent>
                 <ComboBox
@@ -99,6 +110,7 @@
               <ContentControl
                 Content="{Binding SampleSearchResult}"
                 ContentTemplate="{Binding Settings.ItemTemplate, Converter={c:ItemTemplateConverter}}"
+                FontFamily="{Binding Settings.FontFamily, Converter={c:FontFamilyConverter}}"
                 FontSize="15" />
             </Border>
           </StackPanel>

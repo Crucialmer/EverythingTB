@@ -26,7 +26,7 @@
   RenderOptions.ClearTypeHint="Enabled"
   TextOptions.TextFormattingMode="Display"
   TextOptions.TextRenderingMode="Auto"
-  FontFamily="Segoe UI Variable Text, SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, HarmonyOS Sans, Microsoft YaHei UI"
+  FontFamily="{Binding Source={markup:Service {x:Type app:ISettings}}, Path=FontFamily, Converter={c:FontFamilyConverter}}"
   mc:Ignorable="d">
   <i:Interaction.Behaviors>
     <b:FlowDirectionAwareness />

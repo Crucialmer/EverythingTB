@@ -1,4 +1,4 @@
-<UserControl
+﻿<UserControl
   x:Class="EverythingToolbar.Controls.SearchBox"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -19,7 +19,8 @@
     Text="{Binding SearchTerm, RelativeSource={RelativeSource AncestorType={x:Type controls:SearchBox}}, Mode=OneWay}"
     TextChanged="OnTextChanged"
     FontSize="{Binding Settings.SearchBoxFontSize, Converter={c:ResultFontSizeConverter}}"
-    FontWeight="{Binding Settings.SearchBoxFontWeight, Converter={c:SafeFontWeightConverter}}">
+    FontWeight="{Binding Settings.SearchBoxFontWeight, Converter={c:SafeFontWeightConverter}}"
+    FontFamily="{Binding Settings.FontFamily, Converter={c:FontFamilyConverter}}">
     <controls:SearchBox.LeadingContent>
       <Control Focusable="False" Style="{DynamicResource SearchBoxIconStyle}" />
     </controls:SearchBox.LeadingContent>
