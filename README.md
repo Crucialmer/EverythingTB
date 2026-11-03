@@ -1,4 +1,4 @@
-_Read in other languages: [English](README.md), [中文](README.zh-CN.md)_
+﻿_Read in other languages: [English](README.md), [中文](README.zh-CN.md)_
 
 # <img src="EverythingToolbar/Images/AppIcon.ico" width="24"> EverythingTB
 
@@ -8,7 +8,11 @@ _Read in other languages: [English](README.md), [中文](README.zh-CN.md)_
 
 Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingTB v1.7.0 Highlights
+## 🚀 EverythingTB v1.7.1 Highlights
+
+- **Hide Empty Search Enabled by Default (Spotlight Minimal Experience)**:
+  - Settings → Search → Behavior → `Hide empty search` is now enabled out-of-the-box.
+  - Opening search displays a clean, focused search card without dumping unfiltered files, matching modern macOS Spotlight elegance.
 
 - **Complete Brand Evolution: EverythingTB**:
   - The project, release package, application UI, and updater have evolved into **EverythingTB**.

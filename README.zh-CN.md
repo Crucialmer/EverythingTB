@@ -1,4 +1,4 @@
-_其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
+﻿_其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
 
 # <img src="EverythingToolbar/Images/AppIcon.ico" width="24"> EverythingTB
 
@@ -8,7 +8,11 @@ _其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
 
 为 Windows 任务栏提供即时文件搜索集成，由 [Everything](https://www.voidtools.com/) 驱动。
 
-## 🚀 EverythingTB v1.7.0 特性亮点
+## 🚀 EverythingTB v1.7.1 特性亮点
+
+- **隐藏空搜索默认开启（Spotlight 极简启动体验）**：
+  - 「设置」→「搜索」→「行为」中的「隐藏空搜索」默认调整为**开启**状态。
+  - 唤起搜索窗口时不再默认铺满未筛选的冗余文件，呈现纯净高级的 Spotlight 输入飞窗；键入关键词即刻毫秒响应检索。
 
 - **品牌全维升级为 EverythingTB**：
   - 项目名称、发布包名、软件窗口及应用内标识全面升级为 **EverythingTB**，更加简洁利落。

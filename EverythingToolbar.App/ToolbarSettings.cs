@@ -92,7 +92,7 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = false)]
         bool IsAnimationsDisabled { get; set; }
 
-        [Option(DefaultValue = false)]
+        [Option(DefaultValue = true)]
         bool IsHideEmptySearchResults { get; set; }
 
         [Option(DefaultValue = false)]
