@@ -54,7 +54,10 @@ namespace EverythingToolbar.Helpers
 
                 var run = new Run(segments[i]);
                 if (IsMatch(i))
-                    run.FontWeight = FontWeights.Bold;
+                {
+                    run.FontWeight = FontWeights.SemiBold;
+                    run.SetResourceReference(TextElement.ForegroundProperty, "SearchResultHighlightColor");
+                }
 
                 inlines.Add(run);
             }
@@ -82,9 +85,15 @@ namespace EverythingToolbar.Helpers
                 // Clearing rather than assigning Normal keeps an unhighlighted segment inheriting
                 // its weight, exactly as a freshly constructed run would.
                 if (IsMatch(i))
-                    run.FontWeight = FontWeights.Bold;
+                {
+                    run.FontWeight = FontWeights.SemiBold;
+                    run.SetResourceReference(TextElement.ForegroundProperty, "SearchResultHighlightColor");
+                }
                 else
+                {
                     run.ClearValue(TextElement.FontWeightProperty);
+                    run.ClearValue(TextElement.ForegroundProperty);
+                }
 
                 inline = next;
             }

@@ -32,6 +32,7 @@
         VerticalAlignment="Bottom"
         h:HighlightedText.Source="{Binding HighlightedFileName, Mode=OneTime}"
         FontSize="{Binding Source={markup:Service {x:Type app:ISettings}}, Path=ResultFontSize, Converter={c:ResultFontSizeConverter}}"
+        FontWeight="{Binding Source={markup:Service {x:Type app:ISettings}}, Path=ResultFontWeight, Converter={c:SafeFontWeightConverter}}"
         Foreground="{DynamicResource SearchResultFileName}"
         TextTrimming="CharacterEllipsis"
         ToolTip="{Binding FileName, Mode=OneTime}" />

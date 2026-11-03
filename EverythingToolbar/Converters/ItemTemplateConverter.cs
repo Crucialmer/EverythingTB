@@ -8,7 +8,7 @@ namespace EverythingToolbar.Converters
 {
     public class ItemTemplateConverter : MarkupExtension, IValueConverter
     {
-        private const string FallbackKey = "Normal";
+        private const string FallbackKey = "NormalDetailed";
 
         private static readonly Lazy<ResourceDictionary> Templates = new(() =>
             new ResourceDictionary

@@ -51,6 +51,26 @@ namespace EverythingToolbar.Settings
             new("16 pt", 16.0),
         ];
 
+        public List<KeyValuePair<string, double>> SearchBoxFontSizes { get; } =
+        [
+            new("9 pt", 9.0),
+            new("10 pt", 10.0),
+            new("11 pt (默认)", 11.0),
+            new("12 pt", 12.0),
+            new("13 pt", 13.0),
+            new("14 pt", 14.0),
+            new("15 pt", 15.0),
+            new("16 pt", 16.0),
+        ];
+
+        public List<KeyValuePair<string, string>> FontWeightsList { get; } =
+        [
+            new("常规 (Normal)", "Normal"),
+            new("中等 (Medium)", "Medium"),
+            new("半粗 (SemiBold)", "SemiBold"),
+            new("加粗 (Bold)", "Bold"),
+        ];
+
         public List<KeyValuePair<string, string>> ItemTemplates { get; } =
         [
             new(Resources.ItemTemplateCompact, "Compact"),

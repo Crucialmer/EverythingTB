@@ -1,4 +1,4 @@
-<Page
+﻿<Page
   x:Class="EverythingToolbar.Settings.UserInterface"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -49,6 +49,36 @@
                   DisplayMemberPath="Key"
                   ItemsSource="{Binding ResultFontSizes}"
                   SelectedValue="{Binding Settings.ResultFontSize, Mode=TwoWay}"
+                  SelectedValuePath="Value" />
+              </controls:SettingItem.SettingContent>
+            </controls:SettingItem>
+            <controls:SettingItem Margin="0 14 0 0" Title="结果字体样式" HelpText="调整搜索结果列表中文件名的字体粗细（常规、中等、半粗、加粗）">
+              <controls:SettingItem.SettingContent>
+                <ComboBox
+                  HorizontalAlignment="Right"
+                  DisplayMemberPath="Key"
+                  ItemsSource="{Binding FontWeightsList}"
+                  SelectedValue="{Binding Settings.ResultFontWeight, Mode=TwoWay}"
+                  SelectedValuePath="Value" />
+              </controls:SettingItem.SettingContent>
+            </controls:SettingItem>
+            <controls:SettingItem Margin="0 14 0 0" Title="搜索框字体大小" HelpText="调整任务栏搜索输入框的字体大小（默认 11 pt）">
+              <controls:SettingItem.SettingContent>
+                <ComboBox
+                  HorizontalAlignment="Right"
+                  DisplayMemberPath="Key"
+                  ItemsSource="{Binding SearchBoxFontSizes}"
+                  SelectedValue="{Binding Settings.SearchBoxFontSize, Mode=TwoWay}"
+                  SelectedValuePath="Value" />
+              </controls:SettingItem.SettingContent>
+            </controls:SettingItem>
+            <controls:SettingItem Margin="0 14 0 0" Title="搜索框字体样式" HelpText="调整任务栏搜索输入框的字体粗细（常规、中等、半粗、加粗）">
+              <controls:SettingItem.SettingContent>
+                <ComboBox
+                  HorizontalAlignment="Right"
+                  DisplayMemberPath="Key"
+                  ItemsSource="{Binding FontWeightsList}"
+                  SelectedValue="{Binding Settings.SearchBoxFontWeight, Mode=TwoWay}"
                   SelectedValuePath="Value" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>

@@ -17,7 +17,9 @@
     PreviewMouseLeftButtonDown="SelectivelyIgnoreMouseButton"
     Tag="{x:Static properties:Resources.TextBoxWatermark}"
     Text="{Binding SearchTerm, RelativeSource={RelativeSource AncestorType={x:Type controls:SearchBox}}, Mode=OneWay}"
-    TextChanged="OnTextChanged">
+    TextChanged="OnTextChanged"
+    FontSize="{Binding Settings.SearchBoxFontSize, Converter={c:ResultFontSizeConverter}}"
+    FontWeight="{Binding Settings.SearchBoxFontWeight, Converter={c:SafeFontWeightConverter}}">
     <controls:SearchBox.LeadingContent>
       <Control Focusable="False" Style="{DynamicResource SearchBoxIconStyle}" />
     </controls:SearchBox.LeadingContent>

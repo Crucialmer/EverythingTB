@@ -50,11 +50,20 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = "C:\\Program Files\\Everything\\Everything.exe")]
         string EverythingPath { get; set; }
 
-        [Option(DefaultValue = "Normal")]
+        [Option(DefaultValue = "NormalDetailed")]
         string ItemTemplate { get; set; }
 
         [Option(DefaultValue = 11.0)]
         double ResultFontSize { get; set; }
+
+        [Option(DefaultValue = "Normal")]
+        string ResultFontWeight { get; set; }
+
+        [Option(DefaultValue = 11.0)]
+        double SearchBoxFontSize { get; set; }
+
+        [Option(DefaultValue = "Normal")]
+        string SearchBoxFontWeight { get; set; }
 
         [Option(DefaultValue = false)]
         bool IsAutoApplyCustomActions { get; set; }
