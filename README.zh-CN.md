@@ -8,7 +8,11 @@
 
 为 Windows 任务栏提供即时文件搜索集成，由 [Everything](https://www.voidtools.com/) 驱动。
 
-## 🚀 EverythingTB v1.7.1 特性亮点
+## 🚀 EverythingTB v1.7.2 特性亮点
+
+- **修复应用内自动更新重启找不到文件的致命异常**：
+  - 全面兼容新旧版本自更新逻辑，重构更新脚本以支持定位 EverythingTB.exe 与旧版 EverythingToolbar.Launcher.exe。
+  - 发布包内置兼容启动引导，无论从旧版（v1.4~v1.6）还是新版升级，均可平滑自动重启，彻底解决「找不到文件」弹窗。
 
 - **隐藏空搜索默认开启（Spotlight 极简启动体验）**：
   - 「设置」→「搜索」→「行为」中的「隐藏空搜索」默认调整为**开启**状态。

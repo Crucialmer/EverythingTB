@@ -8,7 +8,11 @@
 
 Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingTB v1.7.1 Highlights
+## 🚀 EverythingTB v1.7.2 Highlights
+
+- **Fix Auto-Updater Restart " File Not Found\ Error**:
+ - Enhanced update extraction and restart batch script to accurately resolve both EverythingTB.exe and legacy EverythingToolbar.Launcher.exe.
+ - Added dual-launcher compatibility forwarder ensuring smooth in-place restart across all versions without file not found dialogs.
 
 - **Hide Empty Search Enabled by Default (Spotlight Minimal Experience)**:
   - Settings → Search → Behavior → `Hide empty search` is now enabled out-of-the-box.

@@ -148,9 +148,9 @@ namespace EverythingToolbar.Services
 
                 // Locate the directory containing EverythingToolbar.Launcher.exe
                 string sourceDir = extractDir;
-                if (!File.Exists(Path.Combine(sourceDir, "EverythingToolbar.Launcher.exe")))
+                if (!File.Exists(Path.Combine(sourceDir, "EverythingTB.exe")) && !File.Exists(Path.Combine(sourceDir, "EverythingToolbar.Launcher.exe")))
                 {
-                    var match = Directory.GetFiles(extractDir, "EverythingToolbar.Launcher.exe", SearchOption.AllDirectories).FirstOrDefault();
+                    var match = Directory.GetFiles(extractDir, "EverythingTB.exe", SearchOption.AllDirectories).FirstOrDefault() ?? Directory.GetFiles(extractDir, "EverythingToolbar.Launcher.exe", SearchOption.AllDirectories).FirstOrDefault();
                     if (match != null)
                         sourceDir = Path.GetDirectoryName(match)!;
                 }
@@ -172,7 +172,13 @@ if errorlevel 8 (
     xcopy /Y /E /I /Q ""{sourceDir}\*"" ""{targetDir}\"" >nul
 )
 
-start """" ""{targetDir}\EverythingToolbar.Launcher.exe""
+if exist ""{targetDir}\EverythingTB.exe"" (
+    start """" /d ""{targetDir}"" ""{targetDir}\EverythingTB.exe""
+) else if exist ""{targetDir}\EverythingToolbar.Launcher.exe"" (
+    start """" /d ""{targetDir}"" ""{targetDir}\EverythingToolbar.Launcher.exe""
+) else (
+    start """" /d ""{targetDir}"" ""{targetDir}\EverythingToolbar.exe""
+)
 rd /S /Q ""{sourceDir}"" >nul 2>&1
 del ""{zipFilePath}"" >nul 2>&1
 (goto) 2>nul & del ""%~f0""
