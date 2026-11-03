@@ -1,12 +1,9 @@
 using System;
-using System.Diagnostics;
-using System.Net.Http;
-using System.Reflection;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows;
 using CommunityToolkit.Mvvm.DependencyInjection;
+using EverythingToolbar.App.Helpers;
+using EverythingToolbar.Services;
 using NLog;
 
 namespace EverythingToolbar.Controls
@@ -15,52 +12,11 @@ namespace EverythingToolbar.Controls
     {
         private Version? _latestVersion;
         private static readonly ILogger Logger = ToolbarLogger.GetLogger<UpdateBanner>();
-        private static readonly HttpClient HttpClient = new();
-        private static readonly string LatestReleaseApiUrl =
-            "https://api.github.com/repos/Crucialmer/EverythingToolbar/releases/latest";
-        private static readonly string LatestReleaseUrl = "https://github.com/Crucialmer/EverythingToolbar/releases/latest";
         private readonly ISettings _settings = Ioc.Default.GetRequiredService<ISettings>();
-
-        static UpdateBanner()
-        {
-            HttpClient.DefaultRequestHeaders.UserAgent.ParseAdd("EverythingToolbar");
-        }
 
         public UpdateBanner()
         {
             InitializeComponent();
-        }
-
-        private static async Task<Version?> GetLatestStableReleaseVersion()
-        {
-            try
-            {
-                var response = await HttpClient.GetAsync(LatestReleaseApiUrl);
-                if (!response.IsSuccessStatusCode)
-                    return null;
-
-                await using var jsonStream = await response.Content.ReadAsStreamAsync();
-                var release = await JsonSerializer.DeserializeAsync<Release>(jsonStream);
-                if (release?.TagName == null)
-                    return null;
-
-                var versionString = release.TagName.TrimStart('v', 'V');
-                if (Version.TryParse(versionString, out var parsed))
-                {
-                    return new Version(
-                        parsed.Major,
-                        parsed.Minor >= 0 ? parsed.Minor : 0,
-                        parsed.Build >= 0 ? parsed.Build : 0,
-                        parsed.Revision >= 0 ? parsed.Revision : 0);
-                }
-                return null;
-            }
-            catch
-            {
-                Logger.Info("Failed to get latest release version.");
-            }
-
-            return null;
         }
 
         private async void OnLoaded(object sender, RoutedEventArgs e)
@@ -79,6 +35,7 @@ namespace EverythingToolbar.Controls
                 if (FindName("Banner") is GenericBanner banner)
                 {
                     banner.Text = $"{Properties.Resources.UpdateBannerText} {_latestVersion}";
+                    banner.PrimaryButtonText = "立即更新";
                 }
                 Visibility = Visibility.Visible;
             }
@@ -100,9 +57,35 @@ namespace EverythingToolbar.Controls
             }
         }
 
-        private void OnDownloadClicked(object sender, EventArgs e)
+        private async void OnDownloadClicked(object sender, EventArgs e)
         {
-            Process.Start(new ProcessStartInfo(LatestReleaseUrl) { UseShellExecute = true });
+            if (FindName("Banner") is GenericBanner banner)
+            {
+                banner.PrimaryButtonText = "正在下载...";
+                banner.SecondaryButtonText = "";
+            }
+
+            bool success = await UpdateService.DownloadAndInstallUpdateAsync(
+                progress: new Progress<double>(pct =>
+                {
+                    if (FindName("Banner") is GenericBanner b)
+                    {
+                        b.Headline = $"正在下载更新 ({pct:0}%)...";
+                    }
+                }),
+                statusCallback: status =>
+                {
+                    if (FindName("Banner") is GenericBanner b)
+                    {
+                        b.Text = status;
+                    }
+                });
+
+            if (!success && FindName("Banner") is GenericBanner failBanner)
+            {
+                failBanner.PrimaryButtonText = "重试更新";
+                failBanner.Text = "下载更新失败，请检查网络连接后重试。";
+            }
         }
 
         private void OnSkipUpdateClicked(object sender, EventArgs e)
@@ -114,30 +97,6 @@ namespace EverythingToolbar.Controls
             Visibility = Visibility.Collapsed;
         }
 
-        public static async Task<Version?> CheckForUpdateAsync()
-        {
-            var rawAssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version;
-            var assemblyVersion = rawAssemblyVersion != null
-                ? new Version(
-                    rawAssemblyVersion.Major,
-                    rawAssemblyVersion.Minor >= 0 ? rawAssemblyVersion.Minor : 0,
-                    rawAssemblyVersion.Build >= 0 ? rawAssemblyVersion.Build : 0,
-                    rawAssemblyVersion.Revision >= 0 ? rawAssemblyVersion.Revision : 0)
-                : new Version(0, 0, 0, 0);
-            var latestVersion = await GetLatestStableReleaseVersion();
-
-            if (latestVersion == null)
-                return null;
-            if (assemblyVersion == null || assemblyVersion.CompareTo(latestVersion) >= 0)
-                return null;
-
-            return latestVersion;
-        }
-
-        private sealed class Release
-        {
-            [JsonPropertyName("tag_name")]
-            public string TagName { get; set; } = string.Empty;
-        }
+        public static Task<Version?> CheckForUpdateAsync() => UpdateService.CheckForUpdateAsync();
     }
 }

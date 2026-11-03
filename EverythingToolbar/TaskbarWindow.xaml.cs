@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
@@ -117,7 +117,7 @@ namespace EverythingToolbar
 
         private void OnSettingsChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(_settings.TaskbarWindowAlignment))
+            if (e.PropertyName == nameof(_settings.TaskbarWindowAlignment) || e.PropertyName == nameof(_settings.IsShowDateAndDayOfWeek))
             {
                 UpdatePosition();
             }
@@ -414,7 +414,8 @@ namespace EverythingToolbar
             }
             else
             {
-                width = Math.Min(available, (int)(MaxSearchBoxWidthDip * dpiScale));
+                double maxWidthDip = _settings.IsShowDateAndDayOfWeek ? 340.0 : MaxSearchBoxWidthDip;
+                width = Math.Min(available, (int)(maxWidthDip * dpiScale));
                 height = CalculateSearchBoxHeight(taskbarHeight, dpiScale);
             }
 

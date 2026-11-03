@@ -48,7 +48,7 @@
                   Visibility="{Binding DownloadUpdateButtonVisible, RelativeSource={RelativeSource AncestorType={x:Type Page}}, Converter={c:InvertedBoolToVisibilityConverter}}" />
                 <ui:Button
                   Click="OnDownloadUpdateClicked"
-                  Content="{x:Static properties:Resources.SettingsDownloadLatestVersion}"
+                  Content="{Binding DownloadButtonText, RelativeSource={RelativeSource AncestorType={x:Type Page}}}"
                   Visibility="{Binding DownloadUpdateButtonVisible, RelativeSource={RelativeSource AncestorType={x:Type Page}}, Converter={c:BoolToVisibilityConverter}}" />
                 <ui:ToggleSwitch Margin="15 0 0 0" IsChecked="{Binding Settings.IsUpdateNotificationsEnabled, Mode=TwoWay}" />
               </StackPanel>

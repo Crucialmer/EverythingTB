@@ -82,6 +82,11 @@
                   SelectedValuePath="Value" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>
+            <controls:SettingItem Margin="0 14 0 0" Title="显示日期与星期" HelpText="在搜索框右侧显示 macOS 26 风格日期与星期胶囊组件，弥补 Win11 任务栏信息缺陷（点击呼出日历）">
+              <controls:SettingItem.SettingContent>
+                <ui:ToggleSwitch IsChecked="{Binding Settings.IsShowDateAndDayOfWeek, Mode=TwoWay}" />
+              </controls:SettingItem.SettingContent>
+            </controls:SettingItem>
             <Border
               Margin="0 17 0 0"
               Background="{ui:ThemeResource ControlFillColorDefaultBrush}"

@@ -1,10 +1,12 @@
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.DependencyInjection;
 using EverythingToolbar.Controls;
+using EverythingToolbar.Services;
 
 namespace EverythingToolbar.Settings
 {
@@ -16,6 +18,9 @@ namespace EverythingToolbar.Settings
 
         [ObservableProperty]
         private bool _downloadUpdateButtonVisible;
+
+        [ObservableProperty]
+        private string _downloadButtonText = "立即下载并安装";
 
         [ObservableProperty]
         private bool _noUpdatesBannerOpen;
@@ -34,8 +39,6 @@ namespace EverythingToolbar.Settings
         {
             _autostart.IsEnabled = value;
         }
-
-        private string _latestVersionUrl = "";
 
         public ISettings Settings { get; } = Ioc.Default.GetRequiredService<ISettings>();
         private readonly IAutostart _autostart = Ioc.Default.GetRequiredService<IAutostart>();
@@ -81,7 +84,7 @@ namespace EverythingToolbar.Settings
 
                 if (latestVersion != null)
                 {
-                    _latestVersionUrl = "https://github.com/Crucialmer/EverythingToolbar/releases/latest";
+                    DownloadButtonText = $"立即下载并安装 (v{latestVersion})";
                     DownloadUpdateButtonVisible = true;
                 }
                 else
@@ -97,11 +100,31 @@ namespace EverythingToolbar.Settings
             }
         }
 
-        private void OnDownloadUpdateClicked(object sender, RoutedEventArgs e)
+        private async void OnDownloadUpdateClicked(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(_latestVersionUrl))
+            if (sender is UIElement el)
             {
-                Process.Start(new ProcessStartInfo { FileName = _latestVersionUrl, UseShellExecute = true });
+                el.IsEnabled = false;
+            }
+            DownloadButtonText = "正在连接服务器...";
+
+            bool success = await UpdateService.DownloadAndInstallUpdateAsync(
+                progress: new Progress<double>(pct =>
+                {
+                    DownloadButtonText = $"正在下载更新 ({pct:0}%)...";
+                }),
+                statusCallback: status =>
+                {
+                    DownloadButtonText = status;
+                });
+
+            if (!success)
+            {
+                if (sender is UIElement failedEl)
+                {
+                    failedEl.IsEnabled = true;
+                }
+                DownloadButtonText = "重试下载更新";
             }
         }
     }

@@ -95,6 +95,9 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = false)]
         bool IsShowResultsCount { get; set; }
 
+        [Option(DefaultValue = true)]
+        bool IsShowDateAndDayOfWeek { get; set; }
+
         [Option(DefaultValue = false)]
         bool IsShowQuickToggles { get; set; }
 
