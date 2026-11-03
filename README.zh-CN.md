@@ -8,7 +8,11 @@ _其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
 
 为 Windows 任务栏提供即时文件搜索集成，由 [Everything](https://www.voidtools.com/) 驱动。
 
-## 🚀 EverythingTB v1.7.3 特性亮点
+## 🚀 EverythingTB v1.7.4 特性亮点
+
+- **启动零弹窗，极速静默驻留（Silent Direct Launch）**：
+  - 彻底优化启动流程，打开或开机自启时不再弹出窗口打扰用户，直接静默运行并驻留任务栏托盘。
+  - 采用后台无感预热机制（PreWarm），按下快捷键（`Win+Alt+S`）或点击托盘图标即可毫秒级即刻唤出。
 
 - **极致纯净架构（零历史包袱，100% 专注 EverythingTB）**：
   - 彻底移除所有过渡兼容文件与遗留脚本，压缩包内仅保留唯一原生主程序 **`EverythingTB.exe`**。

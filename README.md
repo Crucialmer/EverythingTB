@@ -8,7 +8,11 @@ _Read in other languages: [English](README.md), [中文](README.zh-CN.md)_
 
 Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingTB v1.7.3 Highlights
+## 🚀 EverythingTB v1.7.4 Highlights
+
+- **Zero-Popup Silent Startup (Clean Direct Launch)**:
+  - Eliminated unwanted automatic popup windows on launch; the application now boots directly and silently into the system tray.
+  - Background offscreen pre-warming delivers instant responsiveness when summoned via global hotkey (`Win+Alt+S`) or tray icon.
 
 - **Pure Pristine Architecture (Zero Legacy Overhead)**:
   - Completely stripped all backward-compatibility stubs and legacy batch scripts; distribution package now contains solely the native **`EverythingTB.exe`**.

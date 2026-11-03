@@ -137,7 +137,7 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = true)]
         bool IsUpdateNotificationsEnabled { get; set; }
 
-        [Option(DefaultValue = false)]
+        [Option(DefaultValue = true)]
         bool IsSetupAssistantDisabled { get; set; }
 
         [Option(DefaultValue = true)]

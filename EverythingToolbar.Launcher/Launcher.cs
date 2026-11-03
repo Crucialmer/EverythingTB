@@ -146,13 +146,13 @@ namespace EverythingToolbar.Launcher
 
                 Dispatcher.BeginInvoke(new Action(() =>
                 {
-                    _controller.ShowStandalone();
-                }), System.Windows.Threading.DispatcherPriority.Loaded);
+                    _controller.PreWarm();
+                }), System.Windows.Threading.DispatcherPriority.Background);
             }
 
             private void ShowSetupAssistantIfNeeded(TrayIcon icon)
             {
-                if (Utils.IsTaskbarPinned() || (_settings.IsSetupAssistantDisabled && _settings.IsTrayIconEnabled))
+                if (_settings.IsSetupAssistantDisabled || Utils.IsTaskbarPinned())
                     return;
 
                 _suppressInitialTrayIcon = true;
