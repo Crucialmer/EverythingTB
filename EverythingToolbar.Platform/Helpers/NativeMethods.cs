@@ -186,6 +186,21 @@ namespace EverythingToolbar.Platform.Helpers
             PInvoke.keybd_event(bVk, bScan, (KEYBD_EVENT_FLAGS)dwFlags, (nuint)dwExtraInfo);
         }
 
+        [DllImport("user32.dll", SetLastError = true)]
+        private static extern bool SetProcessDpiAwarenessContext(IntPtr dpiFlag);
+
+        public static bool EnablePerMonitorV2DpiAwareness()
+        {
+            try
+            {
+                return SetProcessDpiAwarenessContext(new IntPtr(-4));
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public static int DwmFlush()
         {
             return PInvoke.DwmFlush();

@@ -151,7 +151,9 @@ namespace EverythingToolbar.Behaviors
                 return;
 
             // The transition has completed, so the window's own DPI is trustworthy again.
-            _pixelsPerDip = PInvoke.GetDpiForWindow((HWND)hwnd) / 96.0;
+            uint windowDpi = PInvoke.GetDpiForWindow((HWND)hwnd);
+            if (windowDpi >= 96)
+                _pixelsPerDip = windowDpi / 96.0;
             ApplyWindowSize();
         }
 
@@ -404,7 +406,7 @@ namespace EverythingToolbar.Behaviors
                 return dpiX / 96.0;
 
             Logger.Error("Failed to get display scaling factor. This may result in incorrect window placement.");
-            return 1.0;
+            return Icons.DpiHelper.GetEffectiveDpiScale();
         }
 
         private int GetMargin()

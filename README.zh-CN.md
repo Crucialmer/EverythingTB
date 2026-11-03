@@ -8,18 +8,22 @@ _其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
 
 为 Windows 任务栏提供即时文件搜索集成，由 [Everything](https://www.voidtools.com/) 驱动。
 
-## 🚀 EverythingToolbar v1.1.0 特性亮点
+## 🚀 EverythingToolbar v1.2.0 特性亮点
 
-- **.NET 10 LTS 升级**：基于全新 `.NET 10.0` 运行时构建，带来极致瞬时响应与低内存开销。
+- **全屏支持 8K 超高分辨率与无损 DPI 缩放（全新）**：
+  - **原生 Per-Monitor V2 深度适配**：支持从 100% 至 500%+ 任意 DPI 缩放比例，跨显示器拖拽无缝自适应。
+  - **8K 级别超清图标解析**：集成 Windows Shell Jumbo（256×256）超大图标图库与多阶动态回退，告别模糊发虚。
+  - **双重多采样高质过滤**：全局启用 `RenderOptions.BitmapScalingMode="HighQuality"` 与 `SnapsToDevicePixels="True"`，微像素级边缘抗锯齿。
+  - **Display 级高精文字排版**：亚像素对齐与 ClearType 优化，即便在 8K（7680×4320）巨幕上文字依然纤毫毕现、锐利晶莹。
 - **macOS 26 磨砂玻璃设计美学**：
   - 深度磨砂亚克力玻璃（Frosted Acrylic Glass）与 Obsidian/Milk White 双色调。
   - 胶囊搜索条（Capsule Pill）与圆角搜索框，精致聚焦微光。
   - 8px 优雅圆角列表项（Spotlight Row Selection）。
   - 适配现代系统字族（Segoe UI Variable / SF Pro / 微软雅黑）。
-- **可自定义搜索结果字体大小（新增）**：
+- **可自定义搜索结果字体大小**：
   - 默认采用精致黄金阅读尺寸 **11 pt**。
   - 在「设置」→「界面」中支持在 9 pt 至 16 pt 之间自由调节，实时预览并立即生效。
-- **自定义项目自动更新与检测（新增）**：
+- **自定义项目自动更新与检测**：
   - 软件更新源深度对接当前仓库：`https://github.com/Crucialmer/EverythingToolbar`。
   - 启动或在「高级」设置中一键检测新版发布，随时获取最新特性。
 - **100% 纯绿色免安装架构**：
@@ -59,8 +63,8 @@ EverythingToolbar 内置常用搜索过滤器。对于高级用户，它可以�
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/custom_actions.png" alt="自定义操作选项" width="80%">
 
-### 兼容性
-EverythingToolbar 在 Windows 10 和 Windows 11 上均可顺畅运行。在 Windows 11 上，任务栏搜索框开箱即用地嵌入任务栏；如需完整桌面栏支持，还可与 [ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) 及 [StartAllBack](https://www.startallback.com/) 深度搭配。
+### 兼容性与高分辨率
+EverythingToolbar 在 Windows 10 和 Windows 11 上均可顺畅运行，原生支持 8K/4K 超高分显示屏与各级缩放比例。在 Windows 11 上，任务栏搜索框开箱即用地嵌入任务栏；如需完整桌面栏支持，还可与 [ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) 及 [StartAllBack](https://www.startallback.com/) 深度搭配。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/compatible.png" alt="Windows 10截图" width="80%">
 

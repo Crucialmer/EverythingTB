@@ -277,6 +277,8 @@ namespace EverythingToolbar.Launcher
         [STAThread]
         private static void Main(string[] args)
         {
+            NativeMethods.EnablePerMonitorV2DpiAwareness();
+
             using (new Mutex(false, MutexName, out var createdNew))
             {
                 if (createdNew)

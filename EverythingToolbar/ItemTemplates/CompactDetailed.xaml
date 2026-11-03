@@ -19,6 +19,8 @@
         Width="16"
         Height="16"
         VerticalAlignment="Center"
+        RenderOptions.BitmapScalingMode="HighQuality"
+        SnapsToDevicePixels="True"
         b:ResultIcon.Result="{Binding Mode=OneTime}" />
       <TextBlock
         Grid.Column="1"

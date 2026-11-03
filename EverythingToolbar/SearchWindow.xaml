@@ -21,6 +21,11 @@
   ShowAccentBorder="True"
   ShowInTaskbar="False"
   UseLayoutRounding="True"
+  SnapsToDevicePixels="True"
+  RenderOptions.BitmapScalingMode="HighQuality"
+  RenderOptions.ClearTypeHint="Enabled"
+  TextOptions.TextFormattingMode="Display"
+  TextOptions.TextRenderingMode="Auto"
   FontFamily="Segoe UI Variable Text, SF Pro Text, -apple-system, BlinkMacSystemFont, Segoe UI, HarmonyOS Sans, Microsoft YaHei UI"
   mc:Ignorable="d">
   <i:Interaction.Behaviors>

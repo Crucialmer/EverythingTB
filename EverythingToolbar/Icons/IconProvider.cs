@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -7,17 +7,71 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using Windows.Win32;
+using Windows.Win32.Foundation;
+using Windows.Win32.Graphics.Gdi;
+using Windows.Win32.UI.HiDpi;
 using Windows.Win32.UI.Shell;
 
 namespace EverythingToolbar.Icons
 {
+    public static class DpiHelper
+    {
+        public const double DefaultDpi = 96.0;
+
+        /// <summary>
+        /// Gets the effective DPI for the active search window, or the monitor where the cursor is located,
+        /// supporting ultra-high DPI scaling all the way up to 8K resolution (e.g. 300% - 500% DPI).
+        /// </summary>
+        public static double GetCurrentDpi()
+        {
+            if (Application.Current != null)
+            {
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.IsVisible)
+                    {
+                        var handle = new WindowInteropHelper(window).Handle;
+                        if (handle != IntPtr.Zero)
+                        {
+                            uint winDpi = PInvoke.GetDpiForWindow((HWND)handle);
+                            if (winDpi >= 96)
+                                return winDpi;
+                        }
+                    }
+                }
+            }
+
+            try
+            {
+                var cursor = System.Windows.Forms.Cursor.Position;
+                var monitor = PInvoke.MonitorFromPoint(
+                    new System.Drawing.Point(cursor.X, cursor.Y),
+                    MONITOR_FROM_FLAGS.MONITOR_DEFAULTTONEAREST
+                );
+                if (PInvoke.GetDpiForMonitor(monitor, MONITOR_DPI_TYPE.MDT_EFFECTIVE_DPI, out var dpiX, out _).Succeeded && dpiX >= 96)
+                {
+                    return dpiX;
+                }
+            }
+            catch
+            {
+                // Fallback
+            }
+
+            double systemDpi = PInvoke.GetDpiForSystem();
+            return systemDpi >= 96 ? systemDpi : DefaultDpi;
+        }
+
+        public static double GetEffectiveDpiScale() => GetCurrentDpi() / DefaultDpi;
+    }
+
     internal static class ImageScalingHelper
     {
         public static int GetScaledSize(int logicalSize)
         {
-            double dpi = PInvoke.GetDpiForSystem();
-            if (dpi < 96)
-                dpi = 96;
+            double dpi = DpiHelper.GetCurrentDpi();
+
+
             return (int)Math.Ceiling(logicalSize * dpi / 96.0);
         }
 
@@ -26,11 +80,11 @@ namespace EverythingToolbar.Icons
             double targetLogicalSize = logicalSize;
             if (downOnly)
             {
-                double systemDpi = PInvoke.GetDpiForSystem();
-                if (systemDpi < 96)
-                    systemDpi = 96;
+                double currentDpi = DpiHelper.GetCurrentDpi();
 
-                double nativeLogicalSize = source.PixelWidth * 96.0 / systemDpi;
+
+
+                double nativeLogicalSize = source.PixelWidth * 96.0 / currentDpi;
                 targetLogicalSize = Math.Min(logicalSize, nativeLogicalSize);
             }
 
@@ -166,7 +220,8 @@ namespace EverythingToolbar.Icons
                 iconIndexByExt = FallbackDirectoryIconIndex;
             }
 
-            var iconByIndexAndScaleCacheKey = iconIndexByExt + "_" + iconSize;
+            int scaledSize = ImageScalingHelper.GetScaledSize(iconSize);
+            var iconByIndexAndScaleCacheKey = $"{iconIndexByExt}_{iconSize}@{scaledSize}";
             if (!IconByIndexAndScaleCache.TryGetValue(iconByIndexAndScaleCacheKey, out var iconByExtAndScale))
             {
                 iconByExtAndScale = GetIconFromSystemImageList(iconIndexByExt, iconSize);
@@ -183,7 +238,8 @@ namespace EverythingToolbar.Icons
         public static ImageSource? GetExactImage(string path, int iconSize)
         {
             int exactIconIndex = GetIconIndex(path, IconIndexType.ByFilePath);
-            var exactIconCacheKey = exactIconIndex + "_" + iconSize;
+            int scaledSize = ImageScalingHelper.GetScaledSize(iconSize);
+            var exactIconCacheKey = $"{exactIconIndex}_{iconSize}@{scaledSize}";
             if (IconByIndexAndScaleCache.TryGetValue(exactIconCacheKey, out var cachedExactIcon))
                 return cachedExactIcon;
 
@@ -235,13 +291,24 @@ namespace EverythingToolbar.Icons
             {
                 int imageListType = GetImageListType(scaledSize);
                 Guid iid = typeof(Windows.Win32.UI.Controls.IImageList).GUID;
-                if (PInvoke.SHGetImageList(imageListType, &iid, out var ppv).Failed)
-                    return null;
+                object ppv;
+                if (PInvoke.SHGetImageList(imageListType, &iid, out ppv).Failed)
+                {
+                    if (imageListType == ShilJumbo && PInvoke.SHGetImageList(ShilExtralarge, &iid, out ppv).Succeeded)
+                    {
+                    }
+                    else if (PInvoke.SHGetImageList(ShilLarge, &iid, out ppv).Failed)
+                    {
+                        return null;
+                    }
+                }
+
                 imageList = (Windows.Win32.UI.Controls.IImageList)ppv;
 
                 imageList.GetIcon(iconIndex, IldTransparent, out var hIcon);
                 if (hIcon == null || hIcon.IsInvalid)
                     return null;
+
 
                 try
                 {

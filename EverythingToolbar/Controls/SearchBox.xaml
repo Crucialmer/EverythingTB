@@ -1,11 +1,13 @@
-﻿<UserControl
+<UserControl
   x:Class="EverythingToolbar.Controls.SearchBox"
   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
   xmlns:c="clr-namespace:EverythingToolbar.Converters"
   xmlns:controls="clr-namespace:EverythingToolbar.Controls"
   xmlns:properties="clr-namespace:EverythingToolbar.Properties"
-  SizeChanged="OnSizeChanged">
+  SizeChanged="OnSizeChanged"
+  SnapsToDevicePixels="True"
+  UseLayoutRounding="True">
   <TextBox
     Name="TextBox"
     CaretBrush="{DynamicResource TextBoxForegroundActive}"
