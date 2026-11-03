@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows.Data;
 using System.Windows.Markup;
@@ -9,7 +9,7 @@ namespace EverythingToolbar.Converters
     public class FontFamilyConverter : MarkupExtension, IValueConverter
     {
         public static readonly FontFamily DefaultFontFamily =
-            new("Segoe UI Variable Text, SF Pro Text, Segoe UI, HarmonyOS Sans, Microsoft YaHei UI, sans-serif");
+            new("Microsoft YaHei UI, Microsoft YaHei, Segoe UI Variable Text, Segoe UI, sans-serif");
 
         public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
@@ -17,7 +17,7 @@ namespace EverythingToolbar.Converters
             {
                 try
                 {
-                    return new FontFamily($"{fontName}, Segoe UI Variable Text, SF Pro Text, Segoe UI, HarmonyOS Sans, Microsoft YaHei UI, sans-serif");
+                    return new FontFamily($"{fontName}, Microsoft YaHei UI, Microsoft YaHei, Segoe UI, sans-serif");
                 }
                 catch
                 {

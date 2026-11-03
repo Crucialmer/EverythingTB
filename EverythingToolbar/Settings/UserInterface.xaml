@@ -42,7 +42,7 @@
                   SelectedValuePath="Value" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>
-            <controls:SettingItem Margin="0 14 0 0" Title="界面字体" HelpText="自定义全局显示字体系列（支持 macOS 风格、系统默认、HarmonyOS 及所有本地已安装字体）">
+            <controls:SettingItem Margin="0 14 0 0" Title="界面字体" HelpText="自定义全局显示字体系列（默认微软雅黑，并自动枚举本机所有已安装字体）">
               <controls:SettingItem.SettingContent>
                 <ComboBox
                   HorizontalAlignment="Right"
@@ -53,7 +53,7 @@
                   SelectedValuePath="Value" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>
-            <controls:SettingItem Margin="0 14 0 0" Title="结果字体大小" HelpText="调整搜索结果列表中文件名的显示字号（默认 11 pt）">
+            <controls:SettingItem Margin="0 14 0 0" Title="结果字体大小" HelpText="调整搜索结果列表中文件名的显示字号（默认 10 pt）">
               <controls:SettingItem.SettingContent>
                 <ComboBox
                   HorizontalAlignment="Right"
@@ -63,17 +63,18 @@
                   SelectedValuePath="Value" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>
-            <controls:SettingItem Margin="0 14 0 0" Title="结果字体样式" HelpText="调整搜索结果列表中文件名的字体粗细（常规、中等、半粗、加粗）">
+            <controls:SettingItem Margin="0 14 0 0" Title="结果字体样式" HelpText="调整搜索结果列表中文件名的字体粗细（匹配当前字体的 100~900 规格）">
               <controls:SettingItem.SettingContent>
                 <ComboBox
                   HorizontalAlignment="Right"
+                  MinWidth="220"
                   DisplayMemberPath="Key"
                   ItemsSource="{Binding FontWeightsList}"
                   SelectedValue="{Binding Settings.ResultFontWeight, Mode=TwoWay}"
                   SelectedValuePath="Value" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>
-            <controls:SettingItem Margin="0 14 0 0" Title="搜索框字体大小" HelpText="调整任务栏搜索输入框的字体大小（默认 11 pt）">
+            <controls:SettingItem Margin="0 14 0 0" Title="搜索框字体大小" HelpText="调整任务栏搜索输入框的字体大小（默认 10 pt）">
               <controls:SettingItem.SettingContent>
                 <ComboBox
                   HorizontalAlignment="Right"
@@ -83,10 +84,11 @@
                   SelectedValuePath="Value" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>
-            <controls:SettingItem Margin="0 14 0 0" Title="搜索框字体样式" HelpText="调整任务栏搜索输入框的字体粗细（常规、中等、半粗、加粗）">
+            <controls:SettingItem Margin="0 14 0 0" Title="搜索框字体样式" HelpText="调整任务栏搜索输入框的字体粗细（匹配当前字体的 100~900 规格）">
               <controls:SettingItem.SettingContent>
                 <ComboBox
                   HorizontalAlignment="Right"
+                  MinWidth="220"
                   DisplayMemberPath="Key"
                   ItemsSource="{Binding FontWeightsList}"
                   SelectedValue="{Binding Settings.SearchBoxFontWeight, Mode=TwoWay}"

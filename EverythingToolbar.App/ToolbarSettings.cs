@@ -1,4 +1,4 @@
-using Config.Net;
+﻿using Config.Net;
 using EverythingToolbar.Core.Data;
 
 namespace EverythingToolbar.App
@@ -56,13 +56,13 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = "Default")]
         string FontFamily { get; set; }
 
-        [Option(DefaultValue = 11.0)]
+        [Option(DefaultValue = 10.0)]
         double ResultFontSize { get; set; }
 
         [Option(DefaultValue = "Normal")]
         string ResultFontWeight { get; set; }
 
-        [Option(DefaultValue = 11.0)]
+        [Option(DefaultValue = 10.0)]
         double SearchBoxFontSize { get; set; }
 
         [Option(DefaultValue = "Normal")]

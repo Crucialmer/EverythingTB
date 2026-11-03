@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
@@ -17,6 +17,11 @@ namespace EverythingToolbar.Converters
 
             if (value is string s && !string.IsNullOrWhiteSpace(s))
             {
+                if (int.TryParse(s, out int weightNum) && weightNum >= 1 && weightNum <= 1000)
+                {
+                    return FontWeight.FromOpenTypeWeight(weightNum);
+                }
+
                 try
                 {
                     if (WpfFontWeightConverter.ConvertFromString(s) is FontWeight converted)
