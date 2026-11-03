@@ -65,13 +65,8 @@ namespace EverythingToolbar.Settings
             new("16 pt", 16.0),
         ];
 
-        public List<KeyValuePair<string, string>> FontWeightsList { get; } =
-        [
-            new("\u5E38\u89C4 (Normal)", "Normal"),
-            new("\u4E2D\u7B49 (Medium)", "Medium"),
-            new("\u534A\u7C97 (SemiBold)", "SemiBold"),
-            new("\u52A0\u7C97 (Bold)", "Bold"),
-        ];
+        public ObservableCollection<KeyValuePair<string, string>> AvailableFontWeights { get; } = new();
+        public ObservableCollection<KeyValuePair<string, string>> FontWeightsList => AvailableFontWeights;
 
         public List<KeyValuePair<string, string>> AvailableFontFamilies { get; } = GetAvailableFontFamilies();
 
@@ -248,6 +243,7 @@ namespace EverythingToolbar.Settings
         public UserInterfaceViewModel()
         {
             UpdateBrushAndHex();
+            RefreshAvailableFontWeights();
 
             var themeService = Ioc.Default.GetService<ThemeService>();
             if (themeService != null)
@@ -259,6 +255,9 @@ namespace EverythingToolbar.Settings
             {
                 switch (e.PropertyName)
                 {
+                    case nameof(ISettings.FontFamily):
+                        RefreshAvailableFontWeights();
+                        break;
                     case nameof(ISettings.SearchWindowBackground):
                         OnPropertyChanged(nameof(SearchWindowBackground));
                         OnPropertyChanged(nameof(IsCustomColorSelected));
@@ -266,13 +265,16 @@ namespace EverythingToolbar.Settings
                     case nameof(ISettings.SearchWindowBackgroundAlpha):
                         OnPropertyChanged(nameof(CustomColorAlpha));
                         UpdateBrushAndHex();
+            RefreshAvailableFontWeights();
                         break;
                     case nameof(ISettings.SearchWindowBackgroundBrightness):
                         OnPropertyChanged(nameof(CustomColorBrightness));
                         UpdateBrushAndHex();
+            RefreshAvailableFontWeights();
                         break;
                     case nameof(ISettings.ThemeOverride):
                         UpdateBrushAndHex();
+            RefreshAvailableFontWeights();
                         break;
                 }
             };
@@ -354,6 +356,139 @@ namespace EverythingToolbar.Settings
             {
                 Application.Current.Shutdown();
             }
+        }
+        private void RefreshAvailableFontWeights()
+        {
+            var weights = GetFontWeightsForFamily(Settings.FontFamily);
+            AvailableFontWeights.Clear();
+            foreach (var w in weights)
+            {
+                AvailableFontWeights.Add(w);
+            }
+
+            if (!AvailableFontWeights.Any(w => string.Equals(w.Value, Settings.ResultFontWeight, StringComparison.OrdinalIgnoreCase)))
+            {
+                var fallback = AvailableFontWeights.FirstOrDefault(w => string.Equals(w.Value, "Normal", StringComparison.OrdinalIgnoreCase)).Value
+                               ?? AvailableFontWeights.FirstOrDefault().Value;
+                if (!string.IsNullOrEmpty(fallback))
+                    Settings.ResultFontWeight = fallback;
+            }
+
+            if (!AvailableFontWeights.Any(w => string.Equals(w.Value, Settings.SearchBoxFontWeight, StringComparison.OrdinalIgnoreCase)))
+            {
+                var fallback = AvailableFontWeights.FirstOrDefault(w => string.Equals(w.Value, "Normal", StringComparison.OrdinalIgnoreCase)).Value
+                               ?? AvailableFontWeights.FirstOrDefault().Value;
+                if (!string.IsNullOrEmpty(fallback))
+                    Settings.SearchBoxFontWeight = fallback;
+            }
+        }
+
+        public static List<KeyValuePair<string, string>> GetFontWeightsForFamily(string? fontFamilyName)
+        {
+            var standardWeights = new (int Weight, string Value, string ZhName, string EnName)[]
+            {
+                (100, "Thin", "\u6781\u7EC6", "Ultralight / Thin 100"),
+                (200, "ExtraLight", "\u7EA4\u7EC6", "Thin / ExtraLight 200"),
+                (300, "Light", "\u7EC6\u4F53", "Light 300"),
+                (350, "350", "\u6B21\u7EC6", "Semilight 350"),
+                (400, "Normal", "\u5E38\u89C4", "Regular / Normal 400"),
+                (500, "Medium", "\u4E2D\u9ED1 / \u4E2D\u7B49", "Medium 500"),
+                (600, "SemiBold", "\u4E2D\u7C97 / \u534A\u7C97", "SemiBold 600"),
+                (700, "Bold", "\u7C97\u4F53", "Bold 700"),
+                (800, "ExtraBold", "\u7279\u7C97", "Heavy / ExtraBold 800"),
+                (900, "Black", "\u9ED1\u4F53", "Black 900")
+            };
+
+            var result = new List<KeyValuePair<string, string>>();
+
+            FontFamily? family = null;
+            if (!string.IsNullOrWhiteSpace(fontFamilyName) && !string.Equals(fontFamilyName, "Default", StringComparison.OrdinalIgnoreCase))
+            {
+                try
+                {
+                    family = Fonts.SystemFontFamilies.FirstOrDefault(f => string.Equals(f.Source, fontFamilyName, StringComparison.OrdinalIgnoreCase))
+                             ?? new FontFamily(fontFamilyName);
+                }
+                catch { }
+            }
+
+            var probedTypefaces = new Dictionary<int, string>();
+            if (family != null)
+            {
+                try
+                {
+                    var zhLang = System.Windows.Markup.XmlLanguage.GetLanguage("zh-cn");
+                    var enLang = System.Windows.Markup.XmlLanguage.GetLanguage("en-us");
+
+                    foreach (var tf in family.GetTypefaces())
+                    {
+                        int weight = tf.Weight.ToOpenTypeWeight();
+                        string faceName = "";
+                        if (tf.FaceNames.TryGetValue(zhLang, out var zh) && !string.IsNullOrWhiteSpace(zh))
+                            faceName = zh;
+                        else if (tf.FaceNames.TryGetValue(enLang, out var en) && !string.IsNullOrWhiteSpace(en))
+                            faceName = en;
+
+                        if (!probedTypefaces.ContainsKey(weight) || tf.Style == FontStyles.Normal)
+                        {
+                            probedTypefaces[weight] = faceName;
+                        }
+                    }
+                }
+                catch { }
+            }
+
+            bool isPingFang = !string.IsNullOrEmpty(fontFamilyName) && 
+                (fontFamilyName.IndexOf("PingFang", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                 fontFamilyName.IndexOf("\u82F9\u65B9", StringComparison.OrdinalIgnoreCase) >= 0);
+
+            // If a specific font has 3 or more detected typefaces and is not PingFang (which has full 100~900 spectrum)
+            if (!isPingFang && probedTypefaces.Count >= 3)
+            {
+                var sortedWeights = probedTypefaces.Keys.OrderBy(w => w).ToList();
+                foreach (int w in sortedWeights)
+                {
+                    string detectedName = probedTypefaces[w];
+                    var std = standardWeights.FirstOrDefault(s => Math.Abs(s.Weight - w) < 30);
+                    string stdValue = !string.IsNullOrEmpty(std.Value) ? std.Value : w.ToString();
+                    string stdZh = std.ZhName ?? "\u5B57\u91CD";
+                    string stdEn = std.EnName ?? stdValue;
+
+                    string label;
+                    if (!string.IsNullOrWhiteSpace(detectedName) && !string.Equals(detectedName, stdValue, StringComparison.OrdinalIgnoreCase))
+                    {
+                        label = $"{w} - {detectedName} ({stdEn})";
+                    }
+                    else
+                    {
+                        label = $"{w} - {stdZh} ({stdEn})";
+                    }
+
+                    result.Add(new KeyValuePair<string, string>(label, stdValue));
+                }
+                return result;
+            }
+
+            // PingFang (鑻规柟), Default, or variable fonts: provide full 100~900 spectrum tailored with detected names
+            foreach (var std in standardWeights)
+            {
+                if (std.Weight == 350 && !probedTypefaces.ContainsKey(350))
+                    continue;
+
+                string faceName = "";
+                if (probedTypefaces.TryGetValue(std.Weight, out var fn) && !string.IsNullOrWhiteSpace(fn))
+                {
+                    faceName = fn;
+                }
+
+                string label = !string.IsNullOrWhiteSpace(faceName) && !string.Equals(faceName, std.Value, StringComparison.OrdinalIgnoreCase)
+                    ? $"{std.Weight} - {faceName} ({std.EnName})"
+                    : $"{std.Weight} - {std.ZhName} ({std.EnName})";
+
+                result.Add(new KeyValuePair<string, string>(label, std.Value));
+            }
+
+            return result;
         }
     }
 }

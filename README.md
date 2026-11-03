@@ -8,7 +8,12 @@ _Read in other languages: [English](README.md), [中文](README.zh-CN.md)_
 
 Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingTB v1.7.4 Highlights
+## 🚀 EverythingTB v1.7.5 Highlights
+
+- **Dynamic Font Weight Engine (Full 100~900 9-Level Spectrum for PingFang & More)**:
+  - Completely replaced hardcoded 4-level font weights with an adaptive font typeface detection engine.
+  - Fully supports all 9 weights (100 Ultralight, 200 Thin, 300 Light, 400 Regular, 500 Medium, 600 Semibold, 700 Bold, 800 Heavy, 900 Black) for **PingFang SC** (苹方), Source Han Sans, and OpenType variable fonts.
+  - Intelligently probes and surfaces native typeface face names for individual font families (e.g., Segoe UI 350 Semilight) in real time when changing fonts in Settings.
 
 - **Zero-Popup Silent Startup (Clean Direct Launch)**:
   - Eliminated unwanted automatic popup windows on launch; the application now boots directly and silently into the system tray.
