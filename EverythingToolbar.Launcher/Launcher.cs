@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -152,7 +152,7 @@ namespace EverythingToolbar.Launcher
 
             private void ShowSetupAssistantIfNeeded(TrayIcon icon)
             {
-                if (_settings.IsSetupAssistantDisabled || Utils.IsTaskbarPinned())
+                if (Utils.IsTaskbarPinned() || (_settings.IsSetupAssistantDisabled && _settings.IsTrayIconEnabled))
                     return;
 
                 _suppressInitialTrayIcon = true;

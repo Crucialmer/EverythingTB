@@ -8,10 +8,13 @@ _Languages / 语言: [English](README.en.md), [简体中文](README.md)_
 
 Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingTB v1.7.7 Highlights
+## 🚀 EverythingTB v1.7.8 Highlights
+
+- **First-Run Taskbar Setup Assistant Restored**:
+  - Fresh installations will now display the Taskbar Setup Assistant (choose between pinned taskbar icon or taskbar search box), while the search interface remains completely silent without unwanted popups.
 
 - **Default Sort by Run Count (Descending)**:
-  - Search results are now sorted by **Run Count (Descending)** out of the box, putting your most frequently launched apps and files directly at your fingertips while gracefully suppressing unused system items.
+  - Search results are sorted by **Run Count (Descending)** out of the box, putting your most frequently launched apps and files directly at your fingertips.
 
 - **List Focus Behavior Defaults to "Clamp" (Stop at Borders)**:
   - Arrow key navigation in search results now stops cleanly at the top and bottom boundaries rather than cycling unexpectedly.
@@ -27,9 +30,6 @@ Instant file search integration for Windows powered by [Everything](https://www.
 
 - **Dynamic Font Weight Engine (Full 100~900 Spectrum for PingFang & More)**:
   - Fully supports all 9 weights (100 Ultralight to 900 Black) for **PingFang SC** (苹方), Source Han Sans, and variable fonts.
-
-- **Zero-Popup Silent Startup (Clean Direct Launch)**:
-  - Boots directly and silently into the system tray with background offscreen pre-warming.
 
 - **Pure Pristine Architecture**:
   - Single executable distribution package **`EverythingTB.exe`** inside **`EverythingTB.zip`**, isolated `./Config/` folder for 100% portable green usage.
