@@ -8,35 +8,34 @@ _Languages / 语言: [English](README.en.md), [简体中文](README.md)_
 
 Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingTB v1.7.6 Highlights
+## 🚀 EverythingTB v1.7.7 Highlights
 
-- **Default Shortcut Updated to `Alt + S`**:
-  - The default global summon shortcut is now `Alt + S` (previously `Win + Alt + S`), avoiding Windows key conflicts and enabling effortless one-hand summoning.
+- **Default Sort by Run Count (Descending)**:
+  - Search results are now sorted by **Run Count (Descending)** out of the box, putting your most frequently launched apps and files directly at your fingertips while gracefully suppressing unused system items.
+
+- **List Focus Behavior Defaults to "Clamp" (Stop at Borders)**:
+  - Arrow key navigation in search results now stops cleanly at the top and bottom boundaries rather than cycling unexpectedly.
+
+- **Default Result Omissions Synchronized**:
+  - Automatically respects Everything 1.5 result omissions and exclusions by default.
+
+- **Default Shortcut: `Alt + S`**:
+  - Global summon shortcut is `Alt + S`, avoiding Windows key conflicts and enabling effortless one-hand summoning.
 
 - **Refined Taskbar Date Widget Corner Radius**:
   - The corner radius of the taskbar date & weekday capsule has been refined to a subtle 6px, creating a crisp, sophisticated balance with the full-pill search box.
 
-- **Dynamic Font Weight Engine (Full 100~900 9-Level Spectrum for PingFang & More)**:
-  - Completely replaced hardcoded 4-level font weights with an adaptive font typeface detection engine.
-  - Fully supports all 9 weights (100 Ultralight, 200 Thin, 300 Light, 400 Regular, 500 Medium, 600 Semibold, 700 Bold, 800 Heavy, 900 Black) for **PingFang SC** (苹方), Source Han Sans, and OpenType variable fonts.
-  - Intelligently probes and surfaces native typeface face names for individual font families (e.g., Segoe UI 350 Semilight) in real time when changing fonts in Settings.
+- **Dynamic Font Weight Engine (Full 100~900 Spectrum for PingFang & More)**:
+  - Fully supports all 9 weights (100 Ultralight to 900 Black) for **PingFang SC** (苹方), Source Han Sans, and variable fonts.
 
 - **Zero-Popup Silent Startup (Clean Direct Launch)**:
-  - Eliminated unwanted automatic popup windows on launch; the application now boots directly and silently into the system tray.
-  - Background offscreen pre-warming delivers instant responsiveness when summoned via global hotkey (`Alt + S`) or tray icon.
+  - Boots directly and silently into the system tray with background offscreen pre-warming.
 
-- **Pure Pristine Architecture (Zero Legacy Overhead)**:
-  - Completely stripped all backward-compatibility stubs and legacy batch scripts; distribution package now contains solely the native **`EverythingTB.exe`**.
-  - System tray tooltip, mutex identifiers, and auto-restart pipelines updated strictly to EverythingTB branding.
-  - Search history now fully portable under `Config/history.xml` for 100% self-contained green deployment.
-
-- **Hide Empty Search Enabled by Default (Spotlight Minimal Experience)**:
-  - Settings → Search → Behavior → `Hide empty search` is now enabled out-of-the-box.
-  - Opening search displays a clean, focused search card without dumping unfiltered files, matching modern macOS Spotlight elegance.
+- **Pure Pristine Architecture**:
+  - Single executable distribution package **`EverythingTB.exe`** inside **`EverythingTB.zip`**, isolated `./Config/` folder for 100% portable green usage.
 
 - **macOS 26 Design Aesthetic**:
-  - **Floating Translucent Glass Card**: Search window crafted with 14px smooth rounded corners and a subtle 1px luminous translucent border outline, delivering a floating frosted acrylic aesthetic.
-  - **Pill-style Preview Pane**: Refined sidebar border and smooth padding seamlessly integrating with the search view.
+  - Floating translucent glass card with 14px rounded corners and 1px luminous border.
 
 ---
 

@@ -11,16 +11,16 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = false)]
         bool IsRegExEnabled { get; set; }
 
-        [Option(DefaultValue = FocusBehavior.Repeat)]
+        [Option(DefaultValue = FocusBehavior.Clamp)]
         FocusBehavior ListFocusBehavior { get; set; }
 
         [Option(DefaultValue = false)]
         bool IsMatchPath { get; set; }
 
-        [Option(DefaultValue = 1)]
+        [Option(DefaultValue = 9)]
         int SortBy { get; set; }
 
-        [Option(DefaultValue = false)]
+        [Option(DefaultValue = true)]
         bool IsSortDescending { get; set; }
 
         [Option(DefaultValue = false)]
@@ -158,7 +158,7 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = false)]
         bool IsDoubleClickToOpen { get; set; }
 
-        [Option(DefaultValue = false)]
+        [Option(DefaultValue = true)]
         bool IsHideResultOmissions { get; set; }
 
         [Option(Alias = "ForceWin10Theme", DefaultValue = false)]

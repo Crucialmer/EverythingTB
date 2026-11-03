@@ -64,6 +64,19 @@ namespace EverythingToolbar.App.Search
             _settings = settings;
             _everythingClient = everythingClient;
 
+            // Migrate legacy default sort (Path ascending) to new default (RunCount descending)
+            if (_settings.SortBy == (int)SortBy.Path && !_settings.IsSortDescending)
+            {
+                _settings.SortBy = (int)SortBy.RunCount;
+                _settings.IsSortDescending = true;
+            }
+
+            // Migrate legacy default focus behavior (Repeat) to new default (Clamp)
+            if (_settings.ListFocusBehavior == FocusBehavior.Repeat)
+            {
+                _settings.ListFocusBehavior = FocusBehavior.Clamp;
+            }
+
             _currentFilter = _filterProvider.GetInitialFilter();
 
             _settings.PropertyChanged += OnSettingsChanged;
