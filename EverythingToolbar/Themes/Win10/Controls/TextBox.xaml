@@ -9,6 +9,7 @@
     Right="2"
     Top="2" />
   <CornerRadius x:Key="TextBoxCornerRadius" />
+  <CornerRadius x:Key="DateWidgetCornerRadius" />
   <Sys:Double x:Key="TextBoxCornerRadiusRatio">0</Sys:Double>
 
   <ResourceDictionary.MergedDictionaries>

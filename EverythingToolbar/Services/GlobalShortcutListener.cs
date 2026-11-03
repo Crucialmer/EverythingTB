@@ -33,6 +33,13 @@ namespace EverythingToolbar.Services
 
             var shortcutKey = (Key)_settings.ShortcutKey;
             var shortcutModifiers = (ModifierKeys)_settings.ShortcutModifiers;
+            // Migrate legacy default Win+Alt+S to Alt+S
+            if (shortcutKey == Key.S && shortcutModifiers == (ModifierKeys.Windows | ModifierKeys.Alt))
+            {
+                shortcutModifiers = ModifierKeys.Alt;
+                _settings.ShortcutModifiers = (int)ModifierKeys.Alt;
+            }
+
 
             if (shortcutKey == Key.None && shortcutModifiers == ModifierKeys.None)
                 return;

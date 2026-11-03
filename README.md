@@ -19,10 +19,10 @@ _语言 / Languages: [简体中文](README.md), [English](README.en.md)_
 - ⚡ **毫秒级即时检索（Powered by Everything）**：基于 Everything 毫秒级索引库，键入即现，数百万文件瞬间极速响应。
 - 🎨 **macOS 26 悬浮晶透美学**：14px 优雅悬浮卡片、1px 微光半透明轮廓线（Subtle Luminous Border），光影自然通透。
 - 🔤 **智能全字重引擎（自适应苹方等 100~900 完整规格）**：彻底打破字体样式限制，全维支持苹果 **苹方（PingFang SC）**、思源黑体及可变字族的 9 档字重（100 极细 ~ 900 黑体），并智能匹配系统字体原生字重（如 Segoe UI 350 Semilight）。
-- 🔇 **启动零弹窗，极速静默驻留**：打开或开机自启无任何弹窗打扰，直接静默入驻系统任务栏托盘；后台无感预热（PreWarm），按下快捷键（`Win + Alt + S`）即刻毫秒唤出。
+- 🔇 **启动零弹窗，极速静默驻留**：打开或开机自启无任何弹窗打扰，直接静默入驻系统任务栏托盘；后台无感预热（PreWarm），按下默认快捷键（`Alt + S`）即刻毫秒唤出。
 - 🔍 **隐藏空搜索默认开启（Spotlight 极简启动）**：启动呼出时不再扑面而来大量未筛选的繁杂文件，呈现极简专注的搜索卡片，支持键入关键词即刻展开结果。
 - 📦 **100% 纯绿色便携免安装**：单一绿色压缩包 `EverythingTB.zip`，配置文件、自定义操作规则与搜索历史全量隔离在 `./Config/` 目录，零注册表残留，免安装即开即用。
-- 📅 **macOS 26 任务栏日期胶囊组件**：可选任务栏胶囊式日期与星期微件，补全 Windows 11 任务栏信息缺陷，支持一键直达系统日历。
+- 📅 **任务栏日期星期胶囊（精致微圆角）**：可选任务栏日期与星期胶囊微件，精致 6px 微圆角设计与全圆角搜索框错落有致，补全系统信息缺陷，支持一键直达日历。
 - 🔄 **应用内直连自动更新**：告别浏览器手动跳转下载，软件内一键静默升级，自动保留用户所有配置。
 - 🖥️ **原生 Per-Monitor V2 8K 超高清支持**：100%~500%+ 任意 DPI 缩放零失真，Shell Jumbo（256×256）超大图标图库解析。
 
@@ -49,15 +49,10 @@ EverythingTB 既可以作为嵌入 Windows 任务栏的实时搜索框，也可�
 ### 3. 同步 Everything 高级过滤器
 内置多种常用文件过滤器（文档、图片、音乐、视频、程序等）。高级用户可在设置中开启「使用 Everything 过滤器」，与 Everything 本地的自定义分类与过滤规则实时双向同步。
 
-<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/flexible.png" alt="自定义搜索过滤器" width="80%">
+<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/filters.png" alt="高级过滤器" width="80%">
 
-### 4. 快速搜索选项切换
-在搜索面板中支持一键切换大小写匹配、全字匹配、路径匹配及正则表达式（Regex），精确匹配所需目标。
-
-<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/on_point.png" alt="快速搜索选项" width="80%">
-
-### 5. 正则表达式自定义动作
-在「设置」→「自定义操作」中自定义「打开方式」。启用「根据条件自动应用规则」，可基于文件扩展名或路径正则自动匹配执行指定程序或参数。
+### 4. 正则表达式与条件自定义操作
+在「设置」→「自定义操作」中自由配置文件打开行为。支持基于文件类型扩展名及正则条件，自动执行指定的打开或命令行处理规则。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/custom_actions.png" alt="自定义操作" width="80%">
 
@@ -67,7 +62,7 @@ EverythingTB 既可以作为嵌入 Windows 任务栏的实时搜索框，也可�
 
 | 快捷键 | 功能说明 |
 |:---|:---|
-| <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | **呼出 / 隐藏搜索框**（可在设置中自定义） |
+| <kbd>Alt</kbd> + <kbd>S</kbd> | **呼出 / 隐藏搜索框**（默认快捷键，可在设置中自定义） |
 | <kbd>↑</kbd> / <kbd>↓</kbd> | 浏览选择搜索结果 |
 | <kbd>Ctrl</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd> | 浏览历史搜索记录（若开启历史功能） |
 | <kbd>Enter</kbd> / <kbd>单击</kbd> | 打开选中的文件或文件夹 |
@@ -95,7 +90,7 @@ EverythingTB 既可以作为嵌入 Windows 任务栏的实时搜索框，也可�
 1. 前往 [GitHub Releases](https://github.com/Crucialmer/EverythingTB/releases/latest) 下载唯一的绿色免安装包 **`EverythingTB.zip`**。
 2. 解压到任意你喜欢的目录（如 `D:\Tools\EverythingTB`）。
 3. 双击运行 **`EverythingTB.exe`**，程序将直接静默驻留于任务栏托盘。
-4. 按下全局快捷键 <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>，即刻体验极致搜索！
+4. 按下默认全局快捷键 <kbd>Alt</kbd> + <kbd>S</kbd>，即刻体验极致搜索！
 5. **纯绿色承诺**：所有的个性化配置、自定义规则及运行日志均保存在本地 `./Config/` 目录下，绿色无污染，迁移换机直接打包带走。
 
 ---

@@ -1,4 +1,4 @@
-﻿using Config.Net;
+using Config.Net;
 using EverythingToolbar.Core.Data;
 
 namespace EverythingToolbar.App
@@ -83,7 +83,7 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = false)]
         bool IsImportFilters { get; set; }
 
-        [Option(DefaultValue = 9)]
+        [Option(DefaultValue = 1)]
         int ShortcutModifiers { get; set; }
 
         [Option(DefaultValue = 62)]

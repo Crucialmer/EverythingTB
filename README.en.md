@@ -8,7 +8,13 @@ _Languages / 语言: [English](README.en.md), [简体中文](README.md)_
 
 Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingTB v1.7.5 Highlights
+## 🚀 EverythingTB v1.7.6 Highlights
+
+- **Default Shortcut Updated to `Alt + S`**:
+  - The default global summon shortcut is now `Alt + S` (previously `Win + Alt + S`), avoiding Windows key conflicts and enabling effortless one-hand summoning.
+
+- **Refined Taskbar Date Widget Corner Radius**:
+  - The corner radius of the taskbar date & weekday capsule has been refined to a subtle 6px, creating a crisp, sophisticated balance with the full-pill search box.
 
 - **Dynamic Font Weight Engine (Full 100~900 9-Level Spectrum for PingFang & More)**:
   - Completely replaced hardcoded 4-level font weights with an adaptive font typeface detection engine.
@@ -17,61 +23,46 @@ Instant file search integration for Windows powered by [Everything](https://www.
 
 - **Zero-Popup Silent Startup (Clean Direct Launch)**:
   - Eliminated unwanted automatic popup windows on launch; the application now boots directly and silently into the system tray.
-  - Background offscreen pre-warming delivers instant responsiveness when summoned via global hotkey (`Win+Alt+S`) or tray icon.
+  - Background offscreen pre-warming delivers instant responsiveness when summoned via global hotkey (`Alt + S`) or tray icon.
 
 - **Pure Pristine Architecture (Zero Legacy Overhead)**:
   - Completely stripped all backward-compatibility stubs and legacy batch scripts; distribution package now contains solely the native **`EverythingTB.exe`**.
   - System tray tooltip, mutex identifiers, and auto-restart pipelines updated strictly to EverythingTB branding.
   - Search history now fully portable under `Config/history.xml` for 100% self-contained green deployment.
 
-- **Unified About Page & Repository Links**:
-  - Banner title and all community/FAQ hyperlinks refreshed to point directly to `Crucialmer/EverythingTB`.
-
 - **Hide Empty Search Enabled by Default (Spotlight Minimal Experience)**:
   - Settings → Search → Behavior → `Hide empty search` is now enabled out-of-the-box.
   - Opening search displays a clean, focused search card without dumping unfiltered files, matching modern macOS Spotlight elegance.
 
-- **Complete Brand Evolution: EverythingTB**:
-  - The project, release package, application UI, and updater have evolved into **EverythingTB**.
-  - Distributed as a pure portable package: **`EverythingTB.zip`**, directly run `EverythingTB.exe`.
-
 - **macOS 26 Design Aesthetic**:
   - **Floating Translucent Glass Card**: Search window crafted with 14px smooth rounded corners and a subtle 1px luminous translucent border outline, delivering a floating frosted acrylic aesthetic.
   - **Pill-style Preview Pane**: Refined sidebar border and smooth padding seamlessly integrating with the search view.
-  - **macOS 26 & Fluent Typography Hierarchy**: Global default font stack prioritizing `Segoe UI Variable Text` with smooth fallback to `Microsoft YaHei UI`, offering crystal-clear Latin numbers and elegant Chinese typography.
-  - **Spotlight Row Selection & Accent Highlight**: 8px rounded selection capsules, Apple Vibrant Blue search match highlights (`#2997FF` / `#0071E3`), and accent indicators.
-  - **Taskbar Date & Weekday Pill Widget**: Quick glance calendar and weekday pill widget on Windows 11 taskbar with zero-overhead layout caching.
 
-- **Deep Code Optimization & Zero-Impact Execution**:
-  - **Optimized UI Invalidation & Timer Cycles**: Reduced background timer overhead and cached string layouts to completely prevent unnecessary layout passes.
-  - **Native Per-Monitor V2 & 8K Display Resolution**: Crystal-clear scaling from 100% to 500%+ with Shell Jumbo (256×256) icons.
-  - **Direct In-App Auto-Update**: Silent updates without external browser redirection directly from `Crucialmer/EverythingTB`. Portable `./Config` directory is completely protected.
-  - **100% Pure Portable Architecture**: Zero registry writes, zero `%APPDATA%` pollution.
+---
 
-<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/demo.gif" alt="EverythingTB in action" width="80%">
+<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/demo.gif" alt="EverythingTB showcase" width="100%">
 
-## 🌟 Features
+## ✨ Features
 
-### Taskbar Integration & macOS 26 Date Widget
-EverythingTB sits right on your taskbar with an optional macOS 26 style Date & Day of Week pill widget next to the search box, bringing convenient calendar access and date visibility to Windows 11.
+EverythingTB is an instant search integration powered by [Everything](https://www.voidtools.com/).
 
-<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/taskbar_modes.png" alt="Taskbar search box and search icon" width="80%">
+### Taskbar Integration
+EverythingTB can be used as a replacement for the Windows search bar or as an icon. Switching between the two modes is done with one click in the preferences.
 
-### In-App Direct Auto-Update
-Check, download, and install updates directly within the application without being redirected to GitHub in an external browser. All user data in `./Config/` is safely preserved across updates.
+<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/taskbar_modes.png" alt="Taskbar search modes" width="80%">
 
-### Light & Dark Themes
-EverythingTB seamlessly blends into Windows 10 and 11, automatically adjusting to your system theme with macOS 26 vibrant accent highlights.
+### Light & Dark Theme
+EverythingTB matches your Windows design. It uses your system accent color and supports light and dark themes out of the box.
 
-<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/fast.png" alt="Light and dark themes" width="80%">
+<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/fast.png" alt="Light and dark theme" width="80%">
 
-### Custom Search Filters
-EverythingTB includes common search filters out of the box. For advanced users, it can synchronize with Everything's custom filters, giving you complete control over your search experience. Enable this feature by checking **Use Everything filters** in the EverythingTB's **Filters** settings.
+### Everything Filters
+Built-in filters include audio, documents, executables, folders, pictures, and video. You may also use your custom filters defined in Everything.
 
-<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/flexible.png" alt="Custom search filters" width="80%">
+<img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/filters.png" alt="Custom filter options" width="80%">
 
-### Quick Search Options
-Easily toggle search flags (match case, whole word, match path, and regex) to find your files with precision.
+### Quick Toggles
+Quickly toggle search options like match case, match whole words, match path, or regular expressions (regex) to find your files with precision.
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/on_point.png" alt="Quick toggles" width="80%">
 
@@ -101,7 +92,7 @@ EverythingTB runs smoothly on Windows 10 and Windows 11, with native support for
 | (<kbd>Shift</kbd> +) <kbd>Tab</kbd> | Cycle through filters |
 | <kbd>Ctrl</kbd> + <kbd>0-9</kbd> | Select filter by index |
 | <kbd>Space</kbd> | Preview file in QuickLook |
-| <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | Focus search box (customizable) |
+| <kbd>Alt</kbd> + <kbd>S</kbd> | Focus search box (customizable) |
 
 ## 📦 Installation & Portable Usage
 
