@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows;
@@ -8,7 +8,7 @@ namespace EverythingToolbar.Controls
 {
     public partial class UpdateSuccessfulBanner
     {
-        private static readonly string DonateUrl = "https://github.com/srwi/EverythingToolbar#-support";
+        private static readonly string DonateUrl = "https://github.com/Crucialmer/EverythingToolbar";
         private static readonly string CurrentVersion = GetCurrentVersion();
         private readonly ISettings _settings = Ioc.Default.GetRequiredService<ISettings>();
 

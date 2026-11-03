@@ -53,6 +53,9 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = "Normal")]
         string ItemTemplate { get; set; }
 
+        [Option(DefaultValue = 11.0)]
+        double ResultFontSize { get; set; }
+
         [Option(DefaultValue = false)]
         bool IsAutoApplyCustomActions { get; set; }
 

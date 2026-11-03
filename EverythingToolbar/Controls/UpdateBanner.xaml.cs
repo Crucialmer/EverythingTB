@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Reflection;
@@ -17,8 +17,8 @@ namespace EverythingToolbar.Controls
         private static readonly ILogger Logger = ToolbarLogger.GetLogger<UpdateBanner>();
         private static readonly HttpClient HttpClient = new();
         private static readonly string LatestReleaseApiUrl =
-            "https://api.github.com/repos/srwi/EverythingToolbar/releases/latest";
-        private static readonly string LatestReleaseUrl = "https://github.com/srwi/EverythingToolbar/releases/latest";
+            "https://api.github.com/repos/Crucialmer/EverythingToolbar/releases/latest";
+        private static readonly string LatestReleaseUrl = "https://github.com/Crucialmer/EverythingToolbar/releases/latest";
         private readonly ISettings _settings = Ioc.Default.GetRequiredService<ISettings>();
 
         static UpdateBanner()
@@ -45,7 +45,15 @@ namespace EverythingToolbar.Controls
                     return null;
 
                 var versionString = release.TagName.TrimStart('v', 'V');
-                return new Version(versionString);
+                if (Version.TryParse(versionString, out var parsed))
+                {
+                    return new Version(
+                        parsed.Major,
+                        parsed.Minor >= 0 ? parsed.Minor : 0,
+                        parsed.Build >= 0 ? parsed.Build : 0,
+                        parsed.Revision >= 0 ? parsed.Revision : 0);
+                }
+                return null;
             }
             catch
             {
@@ -108,7 +116,14 @@ namespace EverythingToolbar.Controls
 
         public static async Task<Version?> CheckForUpdateAsync()
         {
-            var assemblyVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            var rawAssemblyVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            var assemblyVersion = rawAssemblyVersion != null
+                ? new Version(
+                    rawAssemblyVersion.Major,
+                    rawAssemblyVersion.Minor >= 0 ? rawAssemblyVersion.Minor : 0,
+                    rawAssemblyVersion.Build >= 0 ? rawAssemblyVersion.Build : 0,
+                    rawAssemblyVersion.Revision >= 0 ? rawAssemblyVersion.Revision : 0)
+                : new Version(0, 0, 0, 0);
             var latestVersion = await GetLatestStableReleaseVersion();
 
             if (latestVersion == null)

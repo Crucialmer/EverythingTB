@@ -81,7 +81,7 @@ namespace EverythingToolbar.Settings
 
                 if (latestVersion != null)
                 {
-                    _latestVersionUrl = "https://github.com/srwi/EverythingToolbar/releases/latest";
+                    _latestVersionUrl = "https://github.com/Crucialmer/EverythingToolbar/releases/latest";
                     DownloadUpdateButtonVisible = true;
                 }
                 else

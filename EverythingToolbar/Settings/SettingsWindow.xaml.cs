@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
@@ -75,7 +75,7 @@ namespace EverythingToolbar.Settings
             string osVersion = Environment.OSVersion.ToString();
 
             string url =
-                $"https://github.com/srwi/EverythingToolbar/issues/new?template=bug_report.yml"
+                $"https://github.com/Crucialmer/EverythingToolbar/issues/new?template=bug_report.yml"
                 + $"&version={HttpUtility.UrlEncode(version)}"
                 + $"&et_version={HttpUtility.UrlEncode(everythingVersion)}"
                 + $"&windows_version={HttpUtility.UrlEncode(osVersion)}";

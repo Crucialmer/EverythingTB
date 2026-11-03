@@ -1,136 +1,96 @@
-> [!NOTE]
-> 这是社区的翻译版本，因此可能并不总是最新的。若需获取最新内容，您可以随时查看英文的[README 文件](README.md)。
+_其他语言版本: [English](README.md), [中文](README.zh-CN.md)_
 
 # <img src="EverythingToolbar/Images/AppIcon.ico" width="24"> EverythingToolbar
 
-<a href="https://ko-fi.com/stephanrwi"><img src="https://img.shields.io/static/v1?label=Buy%20me%20a%20coffee&message=%E2%98%95&logo=Ko-fi&color=%23FF5E5B" height="25" /></a>
-<a href="https://paypal.me/rumswinkel"><img src="https://img.shields.io/static/v1?label=Donate&message=%E2%9D%A4&logo=PayPal&color=%23009cde" height="25" /></a>
-<a href="https://github.com/srwi/EverythingToolbar/releases/latest"><img src="https://img.shields.io/github/downloads/srwi/EverythingToolbar/total?color=critical" height="25" /></a>
-<a href="https://crowdin.com/project/everythingtoolbar"><img src="https://badges.crowdin.net/everythingtoolbar/localized.svg" height="25" /></a>
+<a href="https://github.com/Crucialmer/EverythingToolbar/releases/latest"><img src="https://img.shields.io/github/v/release/Crucialmer/EverythingToolbar?color=blue" height="25" /></a>
+<a href="https://github.com/Crucialmer/EverythingToolbar/releases/latest"><img src="https://img.shields.io/github/downloads/Crucialmer/EverythingToolbar/total?color=critical" height="25" /></a>
+<a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0"><img src="https://img.shields.io/badge/.NET-10.0%20LTS-purple.svg" height="25" /></a>
 
-为Windows任务栏提供即时文件搜索集成，由[Everything](https://www.voidtools.com/)提供支持。
+为 Windows 任务栏提供即时文件搜索集成，由 [Everything](https://www.voidtools.com/) 驱动。
+
+## 🚀 EverythingToolbar v1.1.0 特性亮点
+
+- **.NET 10 LTS 升级**：基于全新 `.NET 10.0` 运行时构建，带来极致瞬时响应与低内存开销。
+- **macOS 26 磨砂玻璃设计美学**：
+  - 深度磨砂亚克力玻璃（Frosted Acrylic Glass）与 Obsidian/Milk White 双色调。
+  - 胶囊搜索条（Capsule Pill）与圆角搜索框，精致聚焦微光。
+  - 8px 优雅圆角列表项（Spotlight Row Selection）。
+  - 适配现代系统字族（Segoe UI Variable / SF Pro / 微软雅黑）。
+- **可自定义搜索结果字体大小（新增）**：
+  - 默认采用精致黄金阅读尺寸 **11 pt**。
+  - 在「设置」→「界面」中支持在 9 pt 至 16 pt 之间自由调节，实时预览并立即生效。
+- **自定义项目自动更新与检测（新增）**：
+  - 软件更新源深度对接当前仓库：`https://github.com/Crucialmer/EverythingToolbar`。
+  - 启动或在「高级」设置中一键检测新版发布，随时获取最新特性。
+- **100% 纯绿色免安装架构**：
+  - 抛弃侵入式 COM Deskband，采用无侵入 Launcher 模式。
+  - **零系统写入**：配置（`settings.ini`）、规则（`rules.xml`）与日志（`EverythingToolbar.log`）全部严格保存在程序根目录下的 `./Config` 文件夹中，完全不向 `%APPDATA%`、`%TEMP%` 或 Windows 注册表写入任何多余文件。
+- **框架依赖轻量化发布**：由于系统已预装 .NET 10，软件未打包冗余运行时，解压即用，体积极致轻盈（仅约 14MB）。
+- **发布包**：`release/EverythingToolbar.zip`。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/demo.gif" alt="EverythingToolbar演示" width="80%">
 
 ## 🌟 功能特点
 
 ### 任务栏集成
-EverythingToolbar就在您的任务栏上，既可以是Windows 11上可直接输入的搜索框，也可以是点击后打开搜索窗口的紧凑图标。
+EverythingToolbar 位于您的任务栏上，既可以作为直接在 Windows 11 上键入的搜索框，也可以作为点击打开搜索窗口的紧凑图标。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/taskbar_modes.png" alt="任务栏搜索框与搜索图标" width="80%">
 
-您可以在设置过程中选择，也可以随时在**设置** → **任务栏集成**中切换。
+您可以在设置过程中选择，也可以随时在 **设置** → **任务栏集成** 中切换。此外，在 Windows 10 上 EverythingToolbar 还可以作为原生桌面栏集成。
 
-此外，在Windows 10上，EverythingToolbar还可以作为原生桌面栏集成到任务栏内部。
-
-### 明亮和暗黑主题
-EverythingToolbar无缝融入Windows 10和11，自动适应您的系统主题。
+### 明暗主题自适应
+EverythingToolbar 无缝融入 Windows 10 和 11，自动跟随系统主题切换明亮/暗黑模式。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/fast.png" alt="明亮和暗黑主题" width="80%">
 
 ### 自定义搜索过滤器
-EverythingToolbar内置常用搜索过滤器。对于高级用户，它可以与Everything的自定义过滤器同步，让您完全控制搜索体验。通过在EverythingToolbar的**过滤器**设置中勾选**使用Everything过滤器**来启用此功能。
+EverythingToolbar 内置常用搜索过滤器。对于高级用户，它可以与 Everything 的自定义过滤器同步，让您完全掌控搜索体验。在 EverythingToolbar 的 **过滤器** 设置中勾选 **使用 Everything 过滤器** 即可启用。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/flexible.png" alt="自定义搜索过滤器" width="80%">
 
-### 快速搜索选项
+### 快速切换搜索选项
 轻松切换搜索标志（区分大小写、全字匹配、匹配路径和正则表达式）以精确查找文件。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/on_point.png" alt="快速切换" width="80%">
 
 ### 基于正则表达式的文件操作
-通过导航到**设置** → **自定义操作**创建自定义的**打开方式**操作。启用**根据条件自动应用规则**可以基于文件类型和正则表达式自动执行命令。将正则表达式字段留空，则该操作仅在上下文菜单中显示。
+在 **设置** → **自定义操作** 中创建自定义的 **打开方式**。启用 **根据条件自动应用规则** 可以基于文件类型和正则表达式自动执行指定命令。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/custom_actions.png" alt="自定义操作选项" width="80%">
 
 ### 兼容性
-EverythingToolbar在Windows 10和Windows 11上无缝运行。在Windows 11上，任务栏搜索框开箱即用地嵌入任务栏；如需完整的桌面栏支持，它还与[ExplorerPatcher](https://github.com/valinet/ExplorerPatcher)和[StartAllBack](https://www.startallback.com/)等工具集成。
+EverythingToolbar 在 Windows 10 和 Windows 11 上均可顺畅运行。在 Windows 11 上，任务栏搜索框开箱即用地嵌入任务栏；如需完整桌面栏支持，还可与 [ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) 及 [StartAllBack](https://www.startallback.com/) 深度搭配。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/compatible.png" alt="Windows 10截图" width="80%">
 
-### 其他功能
+### 快捷键一览
 
-- 通过可自定义的全局快捷键即时访问EverythingToolbar
-- 直接从搜索结果拖放文件
-- 通过[QuickLook](https://github.com/QL-Win/QuickLook)或[Seer](http://1218.io/)集成预览文件
-- 支持自定义Everything[实例名称](https://www.voidtools.com/support/everything/multiple_instances/#named_instances)
+| 快捷键 | 功能 |
+|---|---|
+| <kbd>↑</kbd> / <kbd>↓</kbd> | 浏览搜索结果 |
+| <kbd>Ctrl</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd> | 浏览搜索历史（若已启用） |
+| <kbd>Enter</kbd> / <kbd>点击</kbd> | 打开文件或文件夹 |
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> / <kbd>点击</kbd> | 打开所在文件夹 |
+| <kbd>Shift</kbd> + <kbd>Enter</kbd> / <kbd>点击</kbd> | 在 Everything 中打开 |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | 复制完整路径至剪贴板 |
+| <kbd>Alt</kbd> + <kbd>Enter</kbd> / <kbd>点击</kbd> | 查看属性 |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> / <kbd>点击</kbd> | 以管理员身份运行 |
+| <kbd>Shift</kbd> + <kbd>右键</kbd> | 打开系统右键菜单 |
+| (<kbd>Shift</kbd> +) <kbd>Tab</kbd> | 循环切换过滤器 |
+| <kbd>Ctrl</kbd> + <kbd>0-9</kbd> | 依编号选择过滤器 |
+| <kbd>Space</kbd> | 在 QuickLook 中预览文件 |
+| <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | 激活搜索框（可自定义） |
 
-### 键盘快捷键
+## 📦 安装与绿色运行
 
-| 快捷键                                                                   | 功能               |
-|-----------------------------------------------------------------------|------------------|
-| <kbd>↑</kbd> / <kbd>↓</kbd>                                           | 导航搜索结果           |
-| <kbd>Ctrl</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd>                         | 导航搜索历史（如果启用）     |
-| <kbd>Enter</kbd> / <kbd>点击</kbd>                                      | 打开文件或文件夹         |
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> / <kbd>点击</kbd>                    | 打开所在文件夹          |
-| <kbd>Shift</kbd> + <kbd>Enter</kbd> / <kbd>点击</kbd>                   | 在Everything中打开   |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>                     | 复制完整路径到剪贴板       |
-| <kbd>Alt</kbd> + <kbd>Enter</kbd> / <kbd>点击</kbd>                     | 显示文件属性           |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> / <kbd>点击</kbd> | 以管理员身份运行         |
-| <kbd>Shift</kbd> + <kbd>右键点击</kbd>                                    | 打开系统上下文菜单        |
-| (<kbd>Shift</kbd> +) <kbd>Tab</kbd>                                   | 循环切换过滤器          |
-| <kbd>Ctrl</kbd> + <kbd>0-9</kbd>                                      | 按数字选择过滤器         |
-| <kbd>Space</kbd>                                                      | 在QuickLook中预览文件  |
-| <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>                        | 聚焦搜索框（可自定义）      |
+### 环境准备
+- Windows 10 或 Windows 11
+- [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
+- [Everything](https://www.voidtools.com) ≥ 1.4.1 (x64) 并在后台运行
 
-## 📦 安装
-
-### 前提条件
-- Windows 10或Windows 11
-- [Everything](https://www.voidtools.com) ≥ 1.4.1已安装并运行
-  > **注意：** 不支持Everything的Lite版本
-
-### 安装EverythingToolbar
-选择以下安装方法之一：
-
-- **安装程序**：从[GitHub Releases](https://github.com/srwi/EverythingToolbar/releases)下载
-- **winget**：`winget install srwi.everythingtoolbar.launcher`或`winget install srwi.everythingtoolbar.deskband`
-
-## ⚙️ 设置
-
-### 启动器
-*推荐用于未修改的Windows 11安装*
-
-在Windows 11上安装后，设置助手将指导您完成配置过程。它提供两种从任务栏访问EverythingToolbar的方式，任选其一：
-
-- **任务栏搜索框**（仅限Windows 11）：将搜索框嵌入任务栏本身。
-- **任务栏图标**：将EverythingToolbar固定为普通任务栏图标，点击后打开搜索窗口。
-
-两者均可稍后在**设置** → **任务栏集成**中更改。
-
-> 如果设置助手没有自动启动，请在Windows开始菜单中搜索**EverythingToolbar**。
-
-> 对于偏好搜索图标的Windows 10用户（不推荐），请搜索**EverythingToolbar.Launcher.exe**，手动启动并按照设置过程操作。Windows 10不支持任务栏搜索框，请改用桌面栏。
-
-### 桌面栏
-*推荐用于Windows 10或使用[ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) / [StartAllBack](https://www.startallback.com/)时*
-
-在Windows 10上安装后：
-1. 右键点击任务栏，从_工具栏_上下文菜单中选择EverythingToolbar
-   > 您可能需要打开上下文菜单两次才能显示EverythingToolbar
-2. 解锁任务栏以调整大小和位置（[演示视频](https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/deskband_resizing_demo.gif)）
-
-> **Windows 11用户**：安装后设置助手会自动启动。如果要使用桌面栏（仅在使用ExplorerPatcher/StartAllBack时推荐），请关闭助手并通过系统托盘结束EverythingToolbar的后台进程。
-
-有关故障排除和其他设置帮助，请参阅[常见问题解答](FAQ.md)。
-
-## 🤝 贡献
-
-欢迎各种类型的贡献！无论是报告错误、请求功能还是提交拉取请求，您的帮助都将受到赞赏。有关详细指南，包括如何从源代码构建，请参阅 [CONTRIBUTING.md](CONTRIBUTING.md)。
-
-### 如何贡献
-- 创建新问题前请检查现有[问题](https://github.com/srwi/EverythingToolbar/issues)
-- 帮助解决开放的问题和讨论
-- [将EverythingToolbar翻译](https://crowdin.com/project/everythingtoolbar)成您的语言
-
-## 💖 支持
-
-如果您喜欢EverythingToolbar，我将非常感谢您的支持！
-您可以通过在GitHub上给予星标或进行捐赠来表达您的感谢：
-
-- **[给我买杯咖啡](https://ko-fi.com/stephanrwi)**
-- **[通过PayPal捐赠](https://paypal.me/rumswinkel)**
-
-## ❓ 常见问题解答
-
-有关常见问题、故障排除指南和详细配置说明，请访问[常见问题解答](https://github.com/srwi/EverythingToolbar/blob/develop/FAQ.md)。
+### 快速启动（绿色便携版）
+1. 从 [GitHub Releases](https://github.com/Crucialmer/EverythingToolbar/releases/latest) 下载 `EverythingToolbar.zip`。
+2. 解压到任意您喜欢的文件夹。
+3. 直接双击运行 `EverythingToolbar.Launcher.exe`。
+4. 所有的配置、规则及运行日志均隔离在软件根目录 `./Config/` 下，绝不写入 Windows 注册表与 `%APPDATA%`。

@@ -42,6 +42,16 @@
                   SelectedValuePath="Value" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>
+            <controls:SettingItem Margin="0 14 0 0" Title="结果字体大小" HelpText="调整搜索结果列表中文件名的显示字号（默认 11 pt）">
+              <controls:SettingItem.SettingContent>
+                <ComboBox
+                  HorizontalAlignment="Right"
+                  DisplayMemberPath="Key"
+                  ItemsSource="{Binding ResultFontSizes}"
+                  SelectedValue="{Binding Settings.ResultFontSize, Mode=TwoWay}"
+                  SelectedValuePath="Value" />
+              </controls:SettingItem.SettingContent>
+            </controls:SettingItem>
             <Border
               Margin="0 17 0 0"
               Background="{ui:ThemeResource ControlFillColorDefaultBrush}"

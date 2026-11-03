@@ -2,26 +2,31 @@ _Read in other languages: [English](README.md), [中文](README.zh-CN.md)_
 
 # <img src="EverythingToolbar/Images/AppIcon.ico" width="24"> EverythingToolbar
 
-<a href="https://ko-fi.com/stephanrwi"><img src="https://img.shields.io/static/v1?label=Buy%20me%20a%20coffee&message=%E2%98%95&logo=Ko-fi&color=%23FF5E5B" height="25" /></a>
-<a href="https://paypal.me/rumswinkel"><img src="https://img.shields.io/static/v1?label=Donate&message=%E2%9D%A4&logo=PayPal&color=%23009cde" height="25" /></a>
-<a href="https://github.com/srwi/EverythingToolbar/releases/latest"><img src="https://img.shields.io/github/downloads/srwi/EverythingToolbar/total?color=critical" height="25" /></a>
-<a href="https://crowdin.com/project/everythingtoolbar"><img src="https://badges.crowdin.net/everythingtoolbar/localized.svg" height="25" /></a>
+<a href="https://github.com/Crucialmer/EverythingToolbar/releases/latest"><img src="https://img.shields.io/github/v/release/Crucialmer/EverythingToolbar?color=blue" height="25" /></a>
+<a href="https://github.com/Crucialmer/EverythingToolbar/releases/latest"><img src="https://img.shields.io/github/downloads/Crucialmer/EverythingToolbar/total?color=critical" height="25" /></a>
+<a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0"><img src="https://img.shields.io/badge/.NET-10.0%20LTS-purple.svg" height="25" /></a>
 
-Instant file search integration for the Windows taskbar powered by [Everything](https://www.voidtools.com/).
+Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingToolbar
+## 🚀 EverythingToolbar v1.1.0 特性亮点
 
-- **.NET 10 LTS 升级**：基于全新 `.NET 10.0` 运行时构建，具有极速响应与超低内存开销。
-- **macOS 设计美学**：
+- **.NET 10 LTS 升级**：基于全新 `.NET 10.0` 运行时构建，带来极致瞬时响应与低内存开销。
+- **macOS 26 磨砂玻璃设计美学**：
   - 深度磨砂亚克力玻璃（Frosted Acrylic Glass）与 Obsidian/Milk White 双色调。
   - 胶囊搜索条（Capsule Pill）与圆角搜索框，精致聚焦微光。
   - 8px 优雅圆角列表项（Spotlight Row Selection）。
   - 适配现代系统字族（Segoe UI Variable / SF Pro / 微软雅黑）。
+- **可自定义搜索结果字体大小（新增）**：
+  - 默认采用精致黄金阅读尺寸 **11 pt**。
+  - 在「设置」→「界面」中支持在 9 pt 至 16 pt 之间自由调节，实时预览并立即生效。
+- **自定义项目自动更新与检测（新增）**：
+  - 软件更新源深度对接当前仓库：`https://github.com/Crucialmer/EverythingToolbar`。
+  - 启动或在「高级」设置中一键检测新版发布，保持最新功能。
 - **100% 纯绿色免安装架构**：
   - 抛弃侵入式 COM Deskband，采用无侵入 Launcher 模式。
   - **零系统写入**：配置（`settings.ini`）、规则（`rules.xml`）与日志（`EverythingToolbar.log`）全部严格保存在程序根目录下的 `./Config` 文件夹中，完全不向 `%APPDATA%`、`%TEMP%` 或 Windows 注册表写入任何多余文件。
-- **框架依赖轻量化发布**：由于系统已预装 .NET 10，软件未打包冗余运行时，解压即用，体积极致轻盈。
-- **发布文件**：`release/EverythingToolbar.zip`。
+- **框架依赖轻量化发布**：由于系统已预装 .NET 10，软件未打包冗余运行时，解压即用，体积极致轻盈（仅约 14MB）。
+- **发布包**：`release/EverythingToolbar.zip`。
 
 <img src="https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/demo.gif" alt="EverythingToolbar in action" width="80%">
 
@@ -65,84 +70,35 @@ EverythingToolbar works seamlessly on Windows 10 and Windows 11. On Windows 11 t
 - Drag and drop files directly from search results
 - Preview files with [QuickLook](https://github.com/QL-Win/QuickLook) or [Seer](http://1218.io/) integration
 - Support for custom Everything [instance names](https://www.voidtools.com/support/everything/multiple_instances/#named_instances)
+- Customizable result font size (9 pt to 16 pt, default 11 pt)
 
 ### Keyboard Shortcuts
 
-| Shortcut                                                                 | Function                                 |
-|--------------------------------------------------------------------------|------------------------------------------|
-| <kbd>↑</kbd> / <kbd>↓</kbd>                                              | Navigate search results                  |
-| <kbd>Ctrl</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd>                            | Navigate search history (if enabled)     |
-| <kbd>Enter</kbd> / <kbd>Click</kbd>                                      | Open file or folder                      |
-| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> / <kbd>Click</kbd>                    | Open containing folder                   |
-| <kbd>Shift</kbd> + <kbd>Enter</kbd> / <kbd>Click</kbd>                   | Open in Everything                       |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd>                        | Copy full path to clipboard              |
-| <kbd>Alt</kbd> + <kbd>Enter</kbd> / <kbd>Click</kbd>                     | Show file properties                     |
-| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> / <kbd>Click</kbd> | Run as administrator                     |
-| <kbd>Shift</kbd> + <kbd>Right Click</kbd>                                | Open system context menu                 |
-| (<kbd>Shift</kbd> +) <kbd>Tab</kbd>                                      | Cycle through filters                    |
-| <kbd>Ctrl</kbd> + <kbd>0-9</kbd>                                         | Select filter by number                  |
-| <kbd>Space</kbd>                                                         | Preview file in QuickLook                |
-| <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd>                           | Focus search box (customizable)          |
+| Shortcut | Function |
+|---|---|
+| <kbd>↑</kbd> / <kbd>↓</kbd> | Navigate search results |
+| <kbd>Ctrl</kbd> + <kbd>↑</kbd> / <kbd>↓</kbd> | Navigate search history (if enabled) |
+| <kbd>Enter</kbd> / <kbd>Click</kbd> | Open file or folder |
+| <kbd>Ctrl</kbd> + <kbd>Enter</kbd> / <kbd>Click</kbd> | Open containing folder |
+| <kbd>Shift</kbd> + <kbd>Enter</kbd> / <kbd>Click</kbd> | Open in Everything |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | Copy full path to clipboard |
+| <kbd>Alt</kbd> + <kbd>Enter</kbd> / <kbd>Click</kbd> | Show file properties |
+| <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Enter</kbd> / <kbd>Click</kbd> | Run as administrator |
+| <kbd>Shift</kbd> + <kbd>Right Click</kbd> | Open system context menu |
+| (<kbd>Shift</kbd> +) <kbd>Tab</kbd> | Cycle through filters |
+| <kbd>Ctrl</kbd> + <kbd>0-9</kbd> | Select filter by number |
+| <kbd>Space</kbd> | Preview file in QuickLook |
+| <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>S</kbd> | Focus search box (customizable) |
 
-## 📦 Installation
+## 📦 Installation & Green Portable Run
 
 ### Prerequisites
 - Windows 10 or Windows 11
-- [.NET Desktop Runtime 8.0](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) or later
-- [Everything](https://www.voidtools.com) ≥ 1.4.1 installed and running
-  > **Note:** The Lite version of Everything is not supported
+- [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
+- [Everything](https://www.voidtools.com) ≥ 1.4.1 (x64) installed and running
 
-### Install EverythingToolbar
-Choose one of the following installation methods:
-
-- **Installer**: Download from [GitHub Releases](https://github.com/srwi/EverythingToolbar/releases)
-- **winget**: `winget install srwi.everythingtoolbar.launcher` or `winget install srwi.everythingtoolbar.deskband`
-
-## ⚙️ Setup
-
-### Launcher
-*Recommended for unmodified Windows 11 installations*
-
-After installation on Windows 11, the setup assistant will guide you through the configuration process. It offers two ways to reach EverythingToolbar from the taskbar — pick whichever you prefer:
-
-- **Taskbar search box** *(Windows 11 only)*: embeds a search box into the taskbar itself.
-- **Taskbar icon**: pins EverythingToolbar as a regular taskbar icon that opens the search window.
-
-Both can be changed later under **Settings** → **Taskbar integration**.
-
-> If the setup assistant doesn't start automatically, search for **EverythingToolbar** in the Windows Start menu.
-
-> For Windows 10 users who prefer the search icon (not recommended), search for **EverythingToolbar.Launcher.exe**, start it manually and follow the setup process. The taskbar search box is not available on Windows 10 — use the deskband instead.
-
-### Deskband
-*Recommended for Windows 10 or when using [ExplorerPatcher](https://github.com/valinet/ExplorerPatcher) / [StartAllBack](https://www.startallback.com/)*
-
-After installation on Windows 10:
-1. Right-click the taskbar and select EverythingToolbar from the _Toolbars_ context menu
-   > You may need to open the context menu twice for EverythingToolbar to appear
-2. Unlock the taskbar to adjust size and position ([demonstration video](https://raw.githubusercontent.com/srwi/EverythingToolbar/develop/.github/images/deskband_resizing_demo.gif))
-
-> **Windows 11 users**: The setup assistant starts automatically after installation. To use the deskband instead (only recommended with ExplorerPatcher/StartAllBack), close the assistant and end EverythingToolbar's background process via the system tray.
-
-For troubleshooting and additional setup help, see the [FAQ](FAQ.md).
-
-## 🤝 Contributing
-
-All types of contributions are welcome! Whether you're reporting bugs, requesting features, or submitting pull requests, your help is appreciated. For detailed guidelines, including how to build from source, see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-### How to Contribute
-- Check existing [issues](https://github.com/srwi/EverythingToolbar/issues) before creating new ones
-- Help with open issues and discussions
-- [Translate EverythingToolbar](https://crowdin.com/project/everythingtoolbar) into your language
-
-## 💖 Support
-
-If you're enjoying EverythingToolbar, I'd be truly grateful for your support!
-You can show your appreciation by giving a star on GitHub or making a donation:
-
-- **[Buy me a coffee](https://ko-fi.com/stephanrwi)**
-- **[Donate via PayPal](https://paypal.me/rumswinkel)**
-
-## ❓ FAQ
-
-For frequently asked questions, troubleshooting guides, and detailed configuration instructions, visit the [FAQ](https://github.com/srwi/EverythingToolbar/blob/develop/FAQ.md).
+### Quick Start (Green Portable)
+1. Download `EverythingToolbar.zip` from [GitHub Releases](https://github.com/Crucialmer/EverythingToolbar/releases/latest).
+2. Extract to any folder.
+3. Run `EverythingToolbar.Launcher.exe` directly.
+4. All configurations and logs will be isolated inside `./Config/` without polluting Windows registry or `%APPDATA%`.

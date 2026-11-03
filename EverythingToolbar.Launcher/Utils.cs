@@ -39,15 +39,25 @@ namespace EverythingToolbar.Launcher
                             foreach (var lnkFile in lnkFiles)
                             {
                                 dynamic? folder = shell.NameSpace(Path.GetDirectoryName(lnkFile));
-                                dynamic? folderItem = folder?.ParseName(Path.GetFileName(lnkFile));
-                                if (folderItem != null && (bool)folderItem.IsLink)
+                                object? itemObj = folder?.ParseName(Path.GetFileName(lnkFile));
+                                if (itemObj is not null)
                                 {
-                                    dynamic? link = folderItem.GetLink;
-                                    string? linkPath = (string?)link?.Path;
-                                    var linkFileName = Path.GetFileName(linkPath);
-
-                                    if (linkFileName == executableFileName)
-                                        return lnkFile;
+                                    dynamic folderItem = itemObj;
+                                    if (folderItem.IsLink == true)
+                                    {
+                                        object? linkObj = folderItem.GetLink;
+                                        if (linkObj is not null)
+                                        {
+                                            dynamic link = linkObj;
+                                            string? linkPath = (string?)link.Path;
+                                            if (!string.IsNullOrEmpty(linkPath))
+                                            {
+                                                var linkFileName = Path.GetFileName(linkPath);
+                                                if (string.Equals(linkFileName, executableFileName, StringComparison.OrdinalIgnoreCase))
+                                                    return lnkFile;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
