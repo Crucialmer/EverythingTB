@@ -1,4 +1,4 @@
-using Config.Net;
+﻿using Config.Net;
 using EverythingToolbar.Core.Data;
 
 namespace EverythingToolbar.App
@@ -173,7 +173,7 @@ namespace EverythingToolbar.App
         [Option(DefaultValue = "")]
         string UILanguage { get; set; }
 
-        [Option(DefaultValue = false)]
+        [Option(DefaultValue = true)]
         bool TaskbarWindowEnabled { get; set; }
 
         [Option(DefaultValue = "Left")]

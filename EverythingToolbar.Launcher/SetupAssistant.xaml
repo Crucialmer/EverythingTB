@@ -88,13 +88,16 @@
         </Grid.ColumnDefinitions>
 
         <!--  Option 1: pin the taskbar icon (+ its related settings)  -->
-        <StackPanel Grid.Column="0" VerticalAlignment="Top">
+        <StackPanel
+          Grid.Column="0"
+          VerticalAlignment="Top"
+          Cursor="Hand"
+          MouseLeftButtonDown="OnPinOptionCardClicked">
           <StackPanel.Style>
             <Style TargetType="StackPanel">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding IsPinOptionAvailable}" Value="False">
                   <Setter Property="Opacity" Value="0.4" />
-                  <Setter Property="IsEnabled" Value="False" />
                 </DataTrigger>
               </Style.Triggers>
             </Style>
@@ -151,7 +154,7 @@
             CornerRadius="0,0,8,8">
             <controls:SettingItem Title="{x:Static properties:Resources.SetupAssistantHideWindowsSearch}" HelpText="{x:Static properties:Resources.SetupAssistantHideWindowsSearchHelp}">
               <controls:SettingItem.SettingContent>
-                <ui:ToggleSwitch IsChecked="{Binding WindowsSearchHidden, Mode=TwoWay}" />
+                <ui:ToggleSwitch IsChecked="{Binding WindowsSearchHidden, Mode=TwoWay}" IsEnabled="{Binding IsPinOptionAvailable}" />
               </controls:SettingItem.SettingContent>
             </controls:SettingItem>
           </Border>
@@ -189,13 +192,14 @@
         <StackPanel
           Grid.Column="2"
           VerticalAlignment="Top"
+          Cursor="Hand"
+          MouseLeftButtonDown="OnWindowOptionCardClicked"
           Visibility="{Binding IsTaskbarWindowSupported, Converter={c:BoolToVisibilityConverter}}">
           <StackPanel.Style>
             <Style TargetType="StackPanel">
               <Style.Triggers>
                 <DataTrigger Binding="{Binding IsWindowOptionAvailable}" Value="False">
                   <Setter Property="Opacity" Value="0.4" />
-                  <Setter Property="IsEnabled" Value="False" />
                 </DataTrigger>
               </Style.Triggers>
             </Style>

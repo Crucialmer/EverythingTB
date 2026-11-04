@@ -1,4 +1,4 @@
-_语言 / Languages: [简体中文](README.md), [English](README.en.md)_
+﻿_语言 / Languages: [简体中文](README.md), [English](README.en.md)_
 
 # <img src="EverythingToolbar/Images/AppIcon.ico" width="28" style="vertical-align: middle;"> EverythingTB
 
@@ -19,7 +19,7 @@ _语言 / Languages: [简体中文](README.md), [English](README.en.md)_
 - ⚡ **毫秒级即时检索（Powered by Everything）**：基于 Everything 毫秒级索引库，键入即现，数百万文件瞬间极速响应。
 - 🎯 **默认按运行次数（降序）排序**：常用程序与高频文件自动置顶，生僻系统文件自动沉底，与 Everything 经典习惯完美契合。
 - 🛑 **焦点移动方式默认「边界停止」**：键盘上下方向键浏览搜索结果时，首项或末尾自动停驻不再突兀循环，操作沉稳精准。
-- 🛠️ **首次安装智能任务栏引导**：初次运行优雅弹出任务栏选项向导（固定图标 / 任务栏嵌入搜索框），搜索界面保持静默不弹窗打扰。
+- 🛠️ **首次安装智能任务栏引导**：初次运行优雅弹出任务栏选项向导，默认智能选中右侧「任务栏搜索框」选项（开箱即融入现代任务栏，卡片支持轻触即切），搜索界面全程保持静默无感。
 - 🎨 **macOS 26 悬浮晶透美学**：14px 优雅悬浮卡片、1px 微光半透明轮廓线（Subtle Luminous Border），光影自然通透。
 - 🔤 **智能全字重引擎（自适应苹方等 100~900 完整规格）**：彻底打破字体样式限制，全维支持苹果 **苹方（PingFang SC）**、思源黑体及可变字族的 9 档字重（100 极细 ~ 900 黑体），并智能匹配系统字体原生字重（如 Segoe UI 350 Semilight）。
 - 🔇 **日常启动零弹窗，极速静默驻留**：开机自启或日常启动无任何搜索弹窗打扰，直接静默入驻系统任务栏托盘；后台无感预热（PreWarm），按下默认快捷键（`Alt + S`）即刻毫秒唤出。

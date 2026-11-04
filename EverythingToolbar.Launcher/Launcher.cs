@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -69,10 +69,8 @@ namespace EverythingToolbar.Launcher
                     _taskbarWindowHost.AttachAbandoned += () => ShowSetupAssistantIfNeeded(icon);
                     _taskbarWindowHost.Create();
                 }
-                else
-                {
-                    ShowSetupAssistantIfNeeded(icon);
-                }
+
+                ShowSetupAssistantIfNeeded(icon);
 
                 StartToggleListener();
 
@@ -150,13 +148,17 @@ namespace EverythingToolbar.Launcher
                 }), System.Windows.Threading.DispatcherPriority.Background);
             }
 
+            private SetupAssistant? _setupAssistant;
+
             private void ShowSetupAssistantIfNeeded(TrayIcon icon)
             {
-                if (Utils.IsTaskbarPinned() || (_settings.IsSetupAssistantDisabled && _settings.IsTrayIconEnabled))
+                if (_settings.IsSetupAssistantDisabled || _setupAssistant != null)
                     return;
 
                 _suppressInitialTrayIcon = true;
-                new SetupAssistant(icon).Show();
+                _setupAssistant = new SetupAssistant(icon);
+                _setupAssistant.Closed += (_, _) => _setupAssistant = null;
+                _setupAssistant.Show();
             }
 
             protected override void OnSourceInitialized(EventArgs e)

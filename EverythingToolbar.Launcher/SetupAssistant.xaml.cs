@@ -52,10 +52,26 @@ namespace EverythingToolbar.Launcher
 
         public bool PreferencesUnlocked => CurrentStep == 1 || _windowsPolicy.IsTaskbarWindowActive();
 
-        public bool IsPinned => CurrentStep == 1;
+        public bool IsPinned => CurrentStep == 1 && !_settings.TaskbarWindowEnabled;
 
-        public bool IsPinOptionAvailable => IsPinned || !_settings.TaskbarWindowEnabled;
-        public bool IsWindowOptionAvailable => _settings.TaskbarWindowEnabled || !IsPinned;
+        public bool IsPinOptionAvailable => !IsTaskbarWindowSupported || IsPinned || !_settings.TaskbarWindowEnabled;
+        public bool IsWindowOptionAvailable => IsTaskbarWindowSupported && (_settings.TaskbarWindowEnabled || !IsPinned);
+
+        private void OnPinOptionCardClicked(object sender, MouseButtonEventArgs e)
+        {
+            if (_settings.TaskbarWindowEnabled)
+            {
+                _settings.TaskbarWindowEnabled = false;
+            }
+        }
+
+        private void OnWindowOptionCardClicked(object sender, MouseButtonEventArgs e)
+        {
+            if (!_settings.TaskbarWindowEnabled && IsTaskbarWindowSupported)
+            {
+                _settings.TaskbarWindowEnabled = true;
+            }
+        }
 
         // Display text is localized; the stored value stays the invariant "Left"/"Right".
         public List<KeyValuePair<string, string>> TaskbarWindowAlignmentOptions { get; } =
@@ -255,15 +271,20 @@ namespace EverythingToolbar.Launcher
                     e.Cancel = true;
                 }
             }
-            else if (_iconUpdateRequired)
+            else
             {
-                _settings.IconName = Utils.GetThemedAppIconPath();
-                WeakReferenceMessenger.Default.Send(new TaskbarPinIconChanged(_settings.IconName));
+                _settings.IsSetupAssistantDisabled = true;
+                if (_iconUpdateRequired)
+                {
+                    _settings.IconName = Utils.GetThemedAppIconPath();
+                    WeakReferenceMessenger.Default.Send(new TaskbarPinIconChanged(_settings.IconName));
+                }
             }
         }
 
         private void Close(object sender, RoutedEventArgs e)
         {
+            _settings.IsSetupAssistantDisabled = true;
             Close();
         }
 

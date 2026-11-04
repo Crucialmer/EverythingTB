@@ -1,4 +1,4 @@
-_Languages / 语言: [English](README.en.md), [简体中文](README.md)_
+﻿_Languages / 语言: [English](README.en.md), [简体中文](README.md)_
 
 # <img src="EverythingToolbar/Images/AppIcon.ico" width="24"> EverythingTB
 
@@ -8,9 +8,9 @@ _Languages / 语言: [English](README.en.md), [简体中文](README.md)_
 
 Instant file search integration for Windows powered by [Everything](https://www.voidtools.com/).
 
-## 🚀 EverythingTB v1.7.8 Highlights
+## 🚀 EverythingTB v1.7.9 Highlights
 
-- **First-Run Taskbar Setup Assistant Restored**:
+- **Taskbar Setup Assistant Defaults to Right Option (Taskbar Search Box)**:
   - Fresh installations will now display the Taskbar Setup Assistant (choose between pinned taskbar icon or taskbar search box), while the search interface remains completely silent without unwanted popups.
 
 - **Default Sort by Run Count (Descending)**:

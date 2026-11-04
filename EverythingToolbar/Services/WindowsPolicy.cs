@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Windows;
 using Microsoft.Win32;
@@ -34,7 +34,7 @@ namespace EverythingToolbar.Services
         public bool CanEnableTaskbarWindow() =>
             GetWindowsVersion() >= WindowsVersion.Windows11 && !NativeMethods.IsClassicTaskbar();
 
-        public bool IsTaskbarWindowActive() => _settings.TaskbarWindowEnabled;
+        public bool IsTaskbarWindowActive() => CanEnableTaskbarWindow() && _settings.TaskbarWindowEnabled;
 
         public bool IsTaskbarCenterAligned()
         {
